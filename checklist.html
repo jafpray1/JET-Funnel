@@ -1,0 +1,378 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Checklist 14 Hari Go Digital</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#050611; --bg-alt:#090c1a; --surface:#0d1024; --surface-2:#12162c;
+    --border:rgba(255,255,255,.09);
+    --text:#eef0f9; --text-dim:#9aa3bd; --text-faint:#6c7593;
+    --teal:#00dec5; --teal-soft:rgba(0,222,197,.13);
+    --orange:#ffbe1c; --orange-soft:rgba(255,190,28,.13);
+    --purple:#9458ff; --purple-soft:rgba(148,88,255,.13);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6; }
+  h1,h2,h3{ font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif; text-wrap:balance; margin:0; }
+  .mono{ font-family:'JetBrains Mono',ui-monospace,monospace; }
+  a{ color:inherit; } img{ max-width:100%; }
+  ::selection{ background:var(--teal-soft); color:var(--teal); }
+  button{ font-family:inherit; }
+
+  .bar{ height:5px; width:100%; display:flex; }
+  .bar .b1{ flex:0 0 26%; background:var(--orange); }
+  .bar .b2{ flex:1 1 auto; background:var(--teal); }
+  .bar .b3{ flex:0 0 19%; background:var(--purple); }
+
+  .wrap{ max-width:760px; margin:0 auto; padding-inline:24px; }
+
+  .hero{ background:radial-gradient(ellipse 900px 600px at 15% -10%, rgba(0,222,197,.16), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 100% 0%, rgba(148,88,255,.16), transparent 55%), var(--bg);
+    padding-block:52px 32px; border-bottom:1px solid var(--border); }
+  .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:13px;
+    font-weight:600; letter-spacing:.1em; color:var(--teal); text-transform:uppercase; margin-bottom:20px; }
+  .eyebrow .sq{ width:9px; height:9px; background:var(--teal); border-radius:2px; }
+  h1.htitle{ font-size:clamp(30px,5vw,44px); font-weight:700; line-height:1.14; color:#fff; max-width:16ch; margin-bottom:14px; }
+  h1.htitle em{ font-style:normal; color:var(--orange); }
+  .hsub{ font-size:17px; color:var(--text-dim); max-width:56ch; margin-bottom:22px; }
+  .giftbadge{ display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:100px; font-size:14px;
+    font-weight:700; background:var(--purple-soft); border:1px solid rgba(148,88,255,.5); color:#d9c8ff; margin-bottom:26px; }
+
+  /* progress */
+  .progwrap{ background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:20px 22px; }
+  .progtop{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; gap:10px; flex-wrap:wrap; }
+  .progtop b{ font-size:15px; color:#fff; }
+  .progcount{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; color:var(--teal); }
+  .progtrack{ height:10px; border-radius:100px; background:var(--surface-2); overflow:hidden; }
+  .progfill{ height:100%; border-radius:100px; background:linear-gradient(90deg,var(--teal),var(--purple)); width:0%; transition:width .3s ease; }
+  .progmsg{ margin-top:10px; font-size:13.5px; color:var(--text-faint); }
+
+  /* rules */
+  .rules{ display:flex; gap:14px; flex-wrap:wrap; padding-block:26px; border-bottom:1px solid var(--border); }
+  .rule{ flex:1; min-width:220px; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 18px; }
+  .rule .ic{ font-size:20px; margin-bottom:8px; }
+  .rule b{ display:block; color:#fff; font-size:14.5px; margin-bottom:4px; }
+  .rule span{ color:var(--text-dim); font-size:13.5px; }
+
+  /* week nav */
+  .weeknav{ display:flex; gap:8px; padding-block:22px; }
+  .weeknav button{ flex:1; padding:12px 16px; border-radius:12px; border:1px solid var(--border); background:var(--surface);
+    color:var(--text-dim); font-weight:700; font-size:14px; cursor:pointer; }
+  .weeknav button.active{ background:var(--teal-soft); border-color:var(--teal); color:var(--teal); }
+
+  /* day cards */
+  .daylist{ display:flex; flex-direction:column; gap:12px; padding-bottom:30px; }
+  .daycard{ background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:18px 20px; border-left:3px solid var(--accent,var(--teal)); transition:opacity .2s; }
+  .daycard.done{ opacity:.55; }
+  .dayhead{ display:flex; align-items:flex-start; gap:14px; cursor:pointer; }
+  .checkbox{ flex:none; width:28px; height:28px; border-radius:8px; border:2px solid var(--border); background:var(--surface-2);
+    display:flex; align-items:center; justify-content:center; font-size:15px; margin-top:2px; }
+  .daycard.done .checkbox{ background:var(--teal); border-color:var(--teal); color:#04140f; }
+  .daynum{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:700; color:var(--accent,var(--teal)); text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
+  .daytitle{ font-size:16.5px; font-weight:700; color:#fff; }
+  .daycard.done .daytitle{ text-decoration:line-through; text-decoration-color:var(--text-faint); }
+  .chev{ flex:none; width:18px; height:18px; color:var(--text-faint); transition:transform .15s; margin-top:6px; }
+  .daycard.open .chev{ transform:rotate(180deg); }
+  .daybody{ display:none; margin-top:16px; padding-top:16px; border-top:1px solid var(--border); }
+  .daycard.open .daybody{ display:block; }
+  .daymission{ font-size:14.5px; color:#dfe4f2; line-height:1.6; margin-bottom:14px; }
+  .promptbox{ background:var(--surface-2); border:1px solid var(--border); border-left:3px solid var(--accent,var(--teal)); border-radius:12px; padding:14px 16px; }
+  .promptbox .plabel{ font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent,var(--teal)); margin-bottom:8px; display:block; }
+  .promptbox p{ font-size:14px; color:var(--text-dim); margin:0 0 12px; line-height:1.55; }
+  .pactions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .pbtn{ display:inline-flex; align-items:center; gap:6px; padding:8px 13px; border-radius:100px; font-size:12.5px;
+    font-weight:700; border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text-dim);
+    cursor:pointer; text-decoration:none; }
+  .pbtn:hover{ border-color:var(--accent,var(--teal)); color:#fff; }
+  .pbtn.copied{ border-color:var(--teal); color:var(--teal); }
+  .actionnote{ margin-top:12px; font-size:13px; color:var(--text-faint); display:flex; gap:8px; align-items:flex-start; }
+  .actionnote .ic{ flex:none; }
+
+  .weeklabel{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--text-faint); margin:26px 0 12px; }
+
+  /* pdf bar */
+  .pdfbar{ position:sticky; bottom:0; z-index:20; background:rgba(9,12,26,.94); backdrop-filter:blur(10px);
+    border-top:1px solid var(--border); padding:14px 0; }
+  .pdfbar-inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .pdfbar span{ font-size:13px; color:var(--text-faint); }
+  .pdfbtn{ display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:10px; background:var(--teal);
+    color:#04140f; font-weight:800; font-size:14.5px; border:none; cursor:pointer; white-space:nowrap; }
+  .resetbtn{ background:transparent; border:1px solid var(--border); color:var(--text-dim); padding:12px 16px; border-radius:10px; font-size:13px; font-weight:700; cursor:pointer; }
+
+  /* closing */
+  .closing{ padding-block:48px; text-align:center; }
+  .closing h2{ color:#fff; font-size:24px; margin-bottom:12px; }
+  .closing p{ color:var(--text-dim); font-size:15px; max-width:52ch; margin:0 auto 22px; }
+  .btnrow{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; }
+  .btn{ display:inline-flex; align-items:center; gap:9px; padding:14px 24px; border-radius:100px; font-size:15px;
+    font-weight:700; text-decoration:none; }
+  .btn.primary{ background:var(--teal); color:#04140f; }
+  .btn.ghost{ background:transparent; border:1.5px solid var(--border); color:#fff; }
+  .brandline{ display:flex; align-items:center; justify-content:center; gap:12px; }
+  .brandline .logo{ width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--teal),var(--purple));
+    display:flex; align-items:center; justify-content:center; font-weight:800; color:#04140f; font-family:'Space Grotesk',sans-serif; }
+  .brandline .t{ text-align:left; } .brandline b{ display:block; font-size:14.5px; color:#fff; }
+  .brandline small{ color:var(--text-faint); font-size:12.5px; }
+
+  footer{ padding-block:22px 100px; }
+  .disclaimer{ font-size:12px; color:var(--text-faint); max-width:600px; margin:0 auto; text-align:center; }
+
+  @media print{
+    .pdfbar, .weeknav, .pactions, .closing .btnrow, footer .disclaimer, .bar, .checkbox { display:none !important; }
+    body{ background:#fff; color:#111; }
+    .hero{ background:none; border:none; padding-block:10px; }
+    .eyebrow, h1.htitle, .hsub, .giftbadge{ color:#111 !important; background:none !important; border:none !important; }
+    .daycard{ break-inside:avoid; background:#f6f6f6; border-color:#ddd; opacity:1 !important; }
+    .daybody{ display:block !important; }
+    .daytitle{ text-decoration:none !important; color:#111 !important; }
+    .daymission{ color:#111; }
+    .promptbox{ background:#fff; border-color:#ddd; }
+    .progwrap{ background:#f6f6f6; border-color:#ddd; }
+  }
+</style>
+
+<div class="bar"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>Program 14 Hari &middot; by JET AI</div>
+    <h1 class="htitle">Checklist 14 Hari <em>Go Digital</em></h1>
+    <p class="hsub">Satu misi kecil per hari, 15 menit cukup. Dari belum punya konten sama sekali sampai jualan online rapi &mdash; pelan-pelan tapi kepegang.</p>
+    <div class="giftbadge">🎁 Bonus: Mahir AI untuk UMKM</div>
+
+    <div class="progwrap">
+      <div class="progtop">
+        <b>Progres Kamu</b>
+        <span class="progcount"><span id="pcDone">0</span>/14 hari</span>
+      </div>
+      <div class="progtrack"><div class="progfill" id="progFill"></div></div>
+      <div class="progmsg" id="progMsg">Belum mulai &mdash; klik hari 1 buat mulai misi pertama.</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="rules">
+    <div class="rule"><div class="ic">1️⃣</div><b>Urut, jangan loncat</b><span>Kerjain hari demi hari sesuai urutan, biar hasilnya nyambung.</span></div>
+    <div class="rule"><div class="ic">2️⃣</div><b>Bolong sehari? Gapapa</b><span>Bukan berarti gagal. Lanjut lagi besok dari hari yang tertinggal.</span></div>
+  </div>
+
+  <div class="weeknav">
+    <button class="active" data-week="1">Minggu 1 &middot; Fondasi &amp; Foto</button>
+    <button data-week="2">Minggu 2 &middot; Video, Etalase &amp; Ritme</button>
+  </div>
+
+  <div id="week1" class="daylist"></div>
+  <div id="week2" class="daylist" style="display:none"></div>
+
+  <div class="closing">
+    <h2>Selesai 14 Hari, Mau Lanjut Lebih Jauh?</h2>
+    <p>Program ini fokus di kebiasaan dasar. Kalau mau strategi lengkap sampai closing di WhatsApp &amp; Instagram, cek e-book <b>Jualan Laris di WhatsApp &amp; Instagram</b> dari tim JET AI.</p>
+    <div class="btnrow">
+      <a class="btn primary" href="https://wa.me/6281321910880?text=Halo%20JET%20AI%2C%20saya%20mau%20tanya%20soal%20Checklist%2014%20Hari%20Go%20Digital" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-10 4.5-10 10 0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.5.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10s-4.5-10-9.96-10zm5.8 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 2 2.4 1.3 1.2 2.4 1.6 2.8 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+        Chat JET AI di WhatsApp
+      </a>
+    </div>
+    <div class="brandline">
+      <div class="logo">J</div>
+      <div class="t"><b>JET AI</b><small>PT. Japri Edukasi Teknologi</small></div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="disclaimer">Progres disimpan otomatis di browser kamu sendiri (bukan di server kami). Kalau ganti device/browser, progres akan mulai dari 0 lagi. Seluruh konten hak cipta JET AI &middot; PT. Japri Edukasi Teknologi.</p>
+  </footer>
+</div>
+
+<div class="pdfbar">
+  <div class="wrap pdfbar-inner">
+    <span id="pdfnote">Simpan checklist ini biar bisa dicoret manual juga.</span>
+    <div style="display:flex; gap:8px;">
+      <button class="resetbtn" id="resetBtn">Ulang dari 0</button>
+      <button class="pdfbtn" onclick="window.print()">📄 Simpan PDF</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ACCENTS = ["var(--teal)","var(--orange)","var(--purple)"];
+
+const DAYS = [
+  { week:1, title:"Kenalan Sama AI", mission:"Buka ChatGPT atau Gemini. Ceritain singkat bisnismu: jual apa, ke siapa, dan kendala terbesarmu sekarang. Ini jadi 'perkenalan' pertama supaya AI ngerti konteks bisnismu.",
+    plabel:"Prompt Perkenalan", prompt:"Saya punya usaha {P} di {K}. Kendala terbesar saya sekarang soal konten & jualan online adalah ___. Bantu saya susun rencana sederhana 14 hari untuk mulai aktif jualan online.",
+    note:"Simpan jawaban AI-nya, kamu bakal balik lagi ke sini beberapa hari ke depan." },
+  { week:1, title:"Tulis Profil Bisnis Pakai AI", mission:"Minta AI bantu susun nama usaha, satu kalimat deskripsi, dan alasan orang harus beli dari kamu (bukan kompetitor). Bandingkan sama bio yang kamu punya sekarang.",
+    plabel:"Prompt Profil Bisnis", prompt:"Bantu saya tulis bio singkat untuk Instagram/WhatsApp Business usaha {P} di {K}. Sertakan: 1 kalimat pembuka menarik, keunggulan utama, dan CTA singkat.",
+    note:"Update bio IG/WA Business kamu pakai hasil ini hari ini juga." },
+  { week:1, title:"Bikin Brief Foto Produk", mission:"Minta AI buatkan konsep foto: sudut pengambilan, properti pendukung, dan pencahayaan yang cocok buat produkmu. Siapkan propertinya malam ini.",
+    plabel:"Prompt Brief Foto", prompt:"Buatkan 3 konsep foto produk untuk {P}, lengkap dengan sudut kamera, properti pendukung sederhana, dan jenis cahaya yang cocok, tanpa perlu studio.",
+    note:"Cek stok properti: kain polos, meja kayu, atau apa saja yang senada warna produkmu." },
+  { week:1, title:"Eksekusi Foto Produk", mission:"Ambil foto dekat jendela pas cahaya bagus (pagi/sore). Jepret 10-15 foto dari beberapa sudut sesuai brief kemarin. Nggak perlu sempurna, yang penting jadi.",
+    plabel:"Reminder", prompt:"Kalau ragu-ragu pencahayaan, foto dulu 3 versi dari sudut sama dengan jarak berbeda ke jendela, baru pilih yang paling enak dilihat nanti.",
+    note:"Pilih 3 foto paling oke buat dipakai besok." },
+  { week:1, title:"Bikin Caption Pakai AI", mission:"Minta AI buatkan 3 variasi caption dengan gaya berbeda (santai, informatif, storytelling). Baca ulang, pilih yang paling 'kedengaran kayak kamu ngomong'.",
+    plabel:"Prompt Caption", prompt:"Buatkan 3 variasi caption untuk foto produk {P}: satu gaya santai, satu informatif, satu storytelling singkat. Sertakan CTA halus di akhir.",
+    note:"Edit dikit kalau ada kata yang kerasa kaku atau nggak biasa kamu pakai." },
+  { week:1, title:"Posting Pertama", mission:"Upload salah satu foto + caption pilihanmu ke Instagram atau status WhatsApp. Nggak perlu ditunggu-tunggu momen sempurna, upload aja hari ini.",
+    plabel:"Reminder", prompt:"Kalau masih ragu, posting ke story/status dulu (lebih santai, 24 jam hilang) sebelum posting ke feed permanen.",
+    note:"Catat jam berapa kamu posting, buat bahan evaluasi nanti." },
+  { week:1, title:"Evaluasi Ringan Minggu 1", mission:"Lihat balik 6 hari kemarin. Tulis satu hal yang ternyata lebih gampang dari dugaanmu, dan satu hal yang masih bikin bingung.",
+    plabel:"Prompt Evaluasi", prompt:"Saya baru mulai posting konten produk {P} pakai AI selama seminggu. Bagian tersulitnya adalah ___. Kasih saya 2-3 saran praktis buat minggu depan.",
+    note:"Nggak ada jawaban salah di sini, ini cuma buat kamu sadar progresmu sendiri." },
+  { week:2, title:"Bikin Script Video 15 Detik", mission:"Minta AI susun script video pendek 3 adegan, nggak perlu tampil ngomong di kamera kalau belum pede.", plabel:"Prompt Script Video",
+    prompt:"Buatkan script video 15 detik untuk promosi {P}, 3 adegan, tanpa perlu talent bicara di depan kamera, cocok direkam pakai HP.",
+    note:"Print/screenshot scriptnya biar gampang dilihat pas syuting besok." },
+  { week:2, title:"Syuting & Edit Pakai CapCut", mission:"Rekam 3 adegan sesuai script kemarin. Edit sederhana di CapCut: potong yang nggak perlu, tambah teks singkat, musik yang lagi trending.",
+    plabel:"Reminder", prompt:"Kalau baru pertama kali edit, cukup pakai template CapCut yang sudah jadi, ganti klipnya aja dengan video kamu.",
+    note:"Nggak perlu perfect, target selesai satu video utuh hari ini." },
+  { week:2, title:"Upload Video + Rapikan Etalase", mission:"Upload video ke Reels/Feed. Sambil nunggu insight-nya, rapikan juga foto profil, bio, dan highlight story-mu biar keliatan lebih 'toko', bukan akun personal.",
+    plabel:"Prompt Rapikan Etalase", prompt:"Buatkan struktur highlight story untuk akun jualan {P}: nama-nama highlight apa saja yang idealnya ada dan urutan yang masuk akal.",
+    note:"Cek juga apakah nomor WA di bio sudah aktif dan gampang dihubungi." },
+  { week:2, title:"Bikin Template Balasan Chat", mission:"Minta AI bantu susun 3 template balasan buat pertanyaan yang paling sering muncul: harga, stok, cara pesan. Simpan di draft chat/notes biar tinggal copy-paste.",
+    plabel:"Prompt Template Chat", prompt:"Buatkan 3 template balasan WhatsApp untuk usaha {P}: (1) tanya harga, (2) tanya stok/ready, (3) cara pesan & pembayaran. Ramah tapi to the point.",
+    note:"Simpan di 'Quick Reply' kalau pakai WhatsApp Business." },
+  { week:2, title:"Hari Non-Konten: Rapikan Data", mission:"Nggak semua hari harus posting. Hari ini rapikan daftar harga & stok produkmu, minta AI bantu bikin formatnya biar rapi dan gampang diupdate.",
+    plabel:"Prompt Rapikan Data", prompt:"Buatkan template sederhana daftar harga & stok untuk usaha {P} yang gampang diupdate tiap minggu, formatnya bisa saya isi di HP.",
+    note:"Ini fondasi biar kamu nggak bingung sendiri soal stok pas rame orderan." },
+  { week:2, title:"Posting Ketiga + Minta Feedback", mission:"Posting konten ketiga (foto/video, bebas). Kirim ke 2-3 orang terdekat, minta pendapat jujur soal foto/caption/videonya.",
+    plabel:"Prompt Minta Feedback", prompt:"Buatkan pesan singkat buat minta feedback jujur ke teman/keluarga soal konten jualan {P} yang baru saya posting, tanpa kesan maksa mereka beli.",
+    note:"Feedback jujur dari orang dekat sering lebih kepake dari insight angka doang." },
+  { week:2, title:"Susun Ritme Mingguan", mission:"Ini hari terakhir. Minta AI bantu susun jadwal posting mingguan yang realistis sesuai waktu luangmu, bukan target yang bikin kamu capek sendiri.",
+    plabel:"Prompt Ritme Mingguan", prompt:"Buatkan jadwal posting mingguan yang realistis untuk usaha {P}, dengan waktu luang saya sekitar ___ jam per minggu. Sertakan campuran konten foto, video, dan caption.",
+    note:"Selamat! Progres kecil tiap hari, kalau dijumlah, hasilnya besar. 🎉" }
+];
+
+function fill(tpl, produk, kota){
+  return tpl.replaceAll("{P}", produk).replaceAll("{K}", kota);
+}
+
+const PRODUK = "usahamu";
+const KOTA = "kotamu";
+
+let state = {};
+try{
+  state = JSON.parse(localStorage.getItem('jetai_checklist14') || '{}');
+}catch(e){ state = {}; }
+
+function saveState(){
+  try{ localStorage.setItem('jetai_checklist14', JSON.stringify(state)); }catch(e){}
+}
+
+function updateProgress(){
+  const doneCount = Object.values(state).filter(Boolean).length;
+  document.getElementById('pcDone').textContent = doneCount;
+  document.getElementById('progFill').style.width = (doneCount/14*100) + '%';
+  const msgs = [
+    "Belum mulai — klik hari 1 buat mulai misi pertama.",
+    "Mantap, udah gerak! Lanjut pelan-pelan aja.",
+    "Progresmu jalan terus, jangan berhenti sekarang.",
+    "Udah lebih dari separuh, dikit lagi selesai!",
+    "14/14! Selamat, program selesai. 🎉"
+  ];
+  const msg = document.getElementById('progMsg');
+  if(doneCount===0) msg.textContent = msgs[0];
+  else if(doneCount===14) msg.textContent = msgs[4];
+  else if(doneCount>=10) msg.textContent = msgs[3];
+  else if(doneCount>=4) msg.textContent = msgs[2];
+  else msg.textContent = msgs[1];
+}
+
+function renderWeek(weekNum, containerId){
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  const weekDays = DAYS.map((d,i)=>({...d, idx:i})).filter(d=>d.week===weekNum);
+  weekDays.forEach((day, localIdx) => {
+    const globalNum = day.idx + 1;
+    const accent = ACCENTS[localIdx % 3];
+    const isDone = !!state[globalNum];
+    const card = document.createElement('div');
+    card.className = 'daycard' + (isDone ? ' done' : '');
+    card.style.setProperty('--accent', accent);
+    card.dataset.day = globalNum;
+    const plain = fill(day.prompt, PRODUK, KOTA);
+    card.innerHTML = `
+      <div class="dayhead">
+        <div class="checkbox">${isDone ? '✓' : ''}</div>
+        <div style="flex:1">
+          <div class="daynum">Hari ${globalNum}</div>
+          <div class="daytitle">${day.title}</div>
+        </div>
+        <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="daybody">
+        <p class="daymission">${day.mission}</p>
+        <div class="promptbox">
+          <span class="plabel">${day.plabel}</span>
+          <p>${fill(day.prompt, "<b style='color:#fff'>[NAMA_PRODUK]</b>", "<b style='color:#fff'>[KOTA]</b>")}</p>
+          <div class="pactions">
+            <button class="pbtn" data-copy="${encodeURIComponent(plain)}">📋 Salin Prompt</button>
+            <a class="pbtn" href="${'https://chatgpt.com/?q=' + encodeURIComponent(plain)}" target="_blank" rel="noopener">🤖 ChatGPT</a>
+            <a class="pbtn" href="${'https://gemini.google.com/app?q=' + encodeURIComponent(plain)}" target="_blank" rel="noopener">✨ Gemini</a>
+          </div>
+        </div>
+        <div class="actionnote"><span class="ic">💡</span><span>${day.note}</span></div>
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+function toggleOpen(card){
+  card.classList.toggle('open');
+}
+function toggleDone(card, e){
+  e.stopPropagation();
+  const day = card.dataset.day;
+  state[day] = !state[day];
+  saveState();
+  card.classList.toggle('done');
+  card.querySelector('.checkbox').textContent = state[day] ? '✓' : '';
+  updateProgress();
+}
+
+document.addEventListener('click', (e) => {
+  const copyBtn = e.target.closest('[data-copy]');
+  if(copyBtn){
+    const text = decodeURIComponent(copyBtn.getAttribute('data-copy'));
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = copyBtn.textContent;
+      copyBtn.textContent = '✅ Tersalin';
+      copyBtn.classList.add('copied');
+      setTimeout(() => { copyBtn.textContent = orig; copyBtn.classList.remove('copied'); }, 1500);
+    }).catch(() => {});
+    return;
+  }
+  const checkbox = e.target.closest('.checkbox');
+  const card = e.target.closest('.daycard');
+  if(checkbox && card){ toggleDone(card, e); return; }
+  const head = e.target.closest('.dayhead');
+  if(head && card){ toggleOpen(card); return; }
+});
+
+document.querySelectorAll('.weeknav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.weeknav button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const w = btn.dataset.week;
+    document.getElementById('week1').style.display = w === '1' ? 'flex' : 'none';
+    document.getElementById('week2').style.display = w === '2' ? 'flex' : 'none';
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if(confirm('Yakin mau ulang progres dari 0?')){
+    state = {};
+    saveState();
+    renderWeek(1, 'week1');
+    renderWeek(2, 'week2');
+    updateProgress();
+  }
+});
+
+renderWeek(1, 'week1');
+renderWeek(2, 'week2');
+updateProgress();
+</script>
+
+</body></html>

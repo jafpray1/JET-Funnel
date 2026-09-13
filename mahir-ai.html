@@ -1,0 +1,472 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Mahir AI UMKM</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#050611; --bg-alt:#090c1a; --surface:#0d1024; --surface-2:#12162c;
+    --border:rgba(255,255,255,.09);
+    --text:#eef0f9; --text-dim:#9aa3bd; --text-faint:#6c7593;
+    --teal:#00dec5; --teal-soft:rgba(0,222,197,.13);
+    --orange:#ffbe1c; --orange-soft:rgba(255,190,28,.13);
+    --purple:#9458ff; --purple-soft:rgba(148,88,255,.13);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6; min-height:100vh; }
+  h1,h2,h3{ font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif; text-wrap:balance; margin:0; }
+  .mono{ font-family:'JetBrains Mono',ui-monospace,monospace; }
+  a{ color:inherit; } img{ max-width:100%; }
+  ::selection{ background:var(--teal-soft); color:var(--teal); }
+  button, input{ font-family:inherit; }
+
+  .bar{ height:5px; width:100%; display:flex; position:sticky; top:0; z-index:30; }
+  .bar .b1{ flex:0 0 26%; background:var(--orange); }
+  .bar .b2{ flex:1 1 auto; background:var(--teal); }
+  .bar .b3{ flex:0 0 19%; background:var(--purple); }
+
+  .wrap{ max-width:720px; margin:0 auto; padding-inline:24px; }
+  .screen{ min-height:80vh; display:flex; flex-direction:column; justify-content:center; padding-block:40px; }
+
+  .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:13px;
+    font-weight:600; letter-spacing:.1em; color:var(--teal); text-transform:uppercase; margin-bottom:20px; }
+  .eyebrow .sq{ width:9px; height:9px; background:var(--teal); border-radius:2px; }
+
+  /* intro */
+  .intro-hero{ background:radial-gradient(ellipse 900px 600px at 15% -10%, rgba(0,222,197,.16), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 100% 0%, rgba(148,88,255,.16), transparent 55%), var(--bg); }
+  h1.htitle{ font-size:clamp(30px,5.5vw,46px); font-weight:700; line-height:1.13; color:#fff; max-width:15ch; margin-bottom:16px; }
+  h1.htitle em{ font-style:normal; color:var(--orange); }
+  .hsub{ font-size:17px; color:var(--text-dim); max-width:52ch; margin-bottom:26px; }
+  .featrow{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px; }
+  .feat{ display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:100px; font-size:13.5px;
+    font-weight:700; border:1px solid var(--border); background:var(--surface); color:var(--text-dim); }
+  .bigbtn{ display:inline-flex; align-items:center; gap:10px; padding:16px 28px; border-radius:100px; font-size:16px;
+    font-weight:800; border:none; cursor:pointer; background:var(--teal); color:#04140f; }
+  .ghostbtn{ display:inline-flex; align-items:center; gap:10px; padding:14px 24px; border-radius:100px; font-size:14.5px;
+    font-weight:700; border:1.5px solid var(--border); cursor:pointer; background:transparent; color:#fff; }
+  .introbtns{ display:flex; gap:12px; flex-wrap:wrap; }
+  .savednote{ margin-top:16px; font-size:13px; color:var(--text-faint); }
+  .timeest{ font-size:13.5px; color:var(--text-faint); margin-top:18px; display:flex; align-items:center; gap:8px; }
+
+  /* quiz */
+  .qprog{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .qprog span{ font-size:13px; font-weight:700; color:var(--text-faint); font-family:'JetBrains Mono',monospace; }
+  .qtrack{ height:8px; border-radius:100px; background:var(--surface-2); overflow:hidden; margin-bottom:34px; }
+  .qfill{ height:100%; border-radius:100px; background:linear-gradient(90deg,var(--teal),var(--purple)); transition:width .3s ease; }
+  .qtitle{ font-size:26px; font-weight:700; color:#fff; margin-bottom:8px; max-width:22ch; }
+  .qhint{ font-size:14px; color:var(--text-faint); margin-bottom:26px; }
+  .qinput{ width:100%; padding:16px 18px; border-radius:14px; background:var(--surface); border:1.5px solid var(--border);
+    color:#fff; font-size:17px; margin-bottom:8px; }
+  .qinput:focus{ outline:none; border-color:var(--teal); }
+  .qexample{ font-size:13px; color:var(--text-faint); margin-bottom:20px; }
+  .optlist{ display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+  .opt{ display:flex; align-items:center; gap:14px; padding:16px 18px; border-radius:14px; background:var(--surface);
+    border:1.5px solid var(--border); cursor:pointer; }
+  .opt:hover{ border-color:rgba(0,222,197,.4); }
+  .opt.selected{ border-color:var(--teal); background:var(--teal-soft); }
+  .opt .radio{ width:20px; height:20px; border-radius:50%; border:2px solid var(--border); flex:none; position:relative; }
+  .opt.selected .radio{ border-color:var(--teal); }
+  .opt.selected .radio::after{ content:""; position:absolute; inset:3px; border-radius:50%; background:var(--teal); }
+  .opt .otext{ font-size:15.5px; font-weight:600; color:#fff; }
+  .qnav{ display:flex; gap:10px; justify-content:space-between; margin-top:10px; }
+  .navbtn{ display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:100px; font-size:14.5px;
+    font-weight:700; border:1.5px solid var(--border); background:transparent; color:#fff; cursor:pointer; }
+  .navbtn.next{ background:var(--teal); color:#04140f; border:none; }
+  .navbtn.next:disabled{ opacity:.4; cursor:not-allowed; }
+  .navbtn.back{ visibility:visible; }
+
+  /* loading */
+  .loadwrap{ text-align:center; }
+  .spinner{ width:56px; height:56px; border-radius:50%; border:4px solid var(--surface-2); border-top-color:var(--teal);
+    margin:0 auto 26px; animation:spin 0.9s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .loadmsg{ font-size:16px; font-weight:700; color:#fff; }
+
+  /* results */
+  .rtop{ padding-block:20px 14px; }
+  .rbadge{ display:inline-flex; align-items:center; gap:8px; padding:8px 15px; border-radius:100px; font-size:13px;
+    font-weight:700; background:var(--purple-soft); border:1px solid rgba(148,88,255,.5); color:#d9c8ff; margin-bottom:16px; }
+  .rtitle{ font-size:clamp(26px,4.5vw,34px); font-weight:700; color:#fff; margin-bottom:10px; }
+  .rtitle b{ color:var(--teal); }
+  .rsub{ font-size:15px; color:var(--text-dim); max-width:56ch; margin-bottom:22px; }
+
+  .tipbox{ display:flex; gap:12px; background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--orange);
+    border-radius:14px; padding:16px 18px; margin-bottom:24px; }
+  .tipbox .ic{ font-size:20px; flex:none; }
+  .tipbox p{ margin:0; font-size:14px; color:#dfe4f2; line-height:1.55; }
+  .tipbox b{ color:#fff; }
+
+  .sectionlabel{ font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--text-faint); margin:30px 0 14px; }
+
+  .roadmap{ display:flex; flex-direction:column; gap:10px; }
+  .rday{ display:flex; gap:14px; background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent,var(--teal)); border-radius:14px; padding:15px 18px; }
+  .rday .rn{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--accent,var(--teal)); flex:none; width:30px; }
+  .rday .rt{ font-size:14.5px; color:#dfe4f2; line-height:1.55; }
+  .rday .rt b{ color:#fff; }
+  .rday.priority{ background:var(--teal-soft); border-left-color:var(--teal); }
+  .priotag{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--teal); margin-bottom:4px; }
+
+  .plist{ display:flex; flex-direction:column; gap:10px; }
+  .prow{ display:flex; gap:14px; padding:16px 18px; border-radius:14px; background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent,var(--teal)); }
+  .prow .pn{ font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; color:var(--accent,var(--teal)); flex:none; width:24px; padding-top:2px; }
+  .prow .ptext{ flex:1; font-size:14.5px; color:#dfe4f2; line-height:1.55; }
+  .prow .ptext b{ color:var(--orange); font-weight:700; }
+  .pactions{ display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
+  .pbtn{ display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:100px; font-size:12.5px;
+    font-weight:700; border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text-dim);
+    cursor:pointer; text-decoration:none; }
+  .pbtn:hover{ border-color:var(--accent,var(--teal)); color:#fff; }
+  .pbtn.copied{ border-color:var(--teal); color:var(--teal); }
+
+  .resultbar{ position:sticky; bottom:0; z-index:20; background:rgba(9,12,26,.94); backdrop-filter:blur(10px);
+    border-top:1px solid var(--border); padding:14px 0; margin-top:30px; }
+  .resultbar-inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .resultbar span{ font-size:13px; color:var(--text-faint); }
+
+  .closing{ padding-block:44px; text-align:center; }
+  .closing h2{ color:#fff; font-size:22px; margin-bottom:12px; }
+  .closing p{ color:var(--text-dim); font-size:14.5px; max-width:52ch; margin:0 auto 20px; }
+  .btnrow{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:26px; }
+  .btn{ display:inline-flex; align-items:center; gap:9px; padding:13px 22px; border-radius:100px; font-size:14.5px;
+    font-weight:700; text-decoration:none; }
+  .btn.primary{ background:var(--teal); color:#04140f; }
+  .brandline{ display:flex; align-items:center; justify-content:center; gap:12px; }
+  .brandline .logo{ width:32px; height:32px; border-radius:9px; background:linear-gradient(135deg,var(--teal),var(--purple));
+    display:flex; align-items:center; justify-content:center; font-weight:800; color:#04140f; font-family:'Space Grotesk',sans-serif; font-size:14px; }
+  .brandline .t{ text-align:left; } .brandline b{ display:block; font-size:14px; color:#fff; }
+  .brandline small{ color:var(--text-faint); font-size:12px; }
+  footer{ padding-block:20px 100px; }
+  .disclaimer{ font-size:11.5px; color:var(--text-faint); max-width:600px; margin:0 auto; text-align:center; }
+
+  @media print{
+    .bar,.resultbar,.closing .btnrow{ display:none !important; }
+    body{ background:#fff; color:#111; }
+    .rtitle,.rsub,.rday .rt,.prow .ptext,.tipbox p{ color:#111 !important; }
+    .rday,.prow,.tipbox{ background:#f6f6f6; border-color:#ddd; }
+    .pactions{ display:none; }
+  }
+</style>
+
+<div class="bar"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+<div id="app"></div>
+
+<script>
+const QUESTIONS = [
+  { key:"nama", type:"text", title:"Nama usaha kamu apa?", hint:"Biar semua rencana & prompt di bawah dipersonalisasi pakai nama ini.", example:"contoh: Kopi Sultan, Griya Jahit Ayu, dsb." },
+  { key:"kategori", type:"choice", title:"Usaha kamu paling deket ke kategori apa?", hint:"Pilih yang paling mendekati.",
+    options:[
+      {v:"makanan", t:"🍔 Makanan & Minuman"},
+      {v:"fashion", t:"👗 Fashion & Aksesoris"},
+      {v:"kerajinan", t:"🧺 Kerajinan & Produk Rumahan"},
+      {v:"jasa", t:"🛠️ Jasa & Layanan"},
+      {v:"lainnya", t:"📦 Lainnya"}
+    ]},
+  { key:"ai_used", type:"choice", title:"Sejauh ini kamu udah pernah pakai AI kayak ChatGPT/Gemini?", hint:"Jawab jujur aja, nggak ada yang salah.",
+    options:[
+      {v:"belum", t:"Belum pernah sama sekali"},
+      {v:"chatgpt", t:"Pernah coba ChatGPT"},
+      {v:"gemini", t:"Pernah coba Gemini"},
+      {v:"sering", t:"Udah lumayan sering pakai AI"}
+    ]},
+  { key:"waktu", type:"choice", title:"Waktu luang kamu buat praktik per hari kira-kira berapa lama?", hint:"Rencana di bawah bakal disesuaikan sama ini.",
+    options:[
+      {v:"singkat", t:"Kurang dari 15 menit"},
+      {v:"sedang", t:"15–30 menit"},
+      {v:"agakl", t:"30–60 menit"},
+      {v:"panjang", t:"Lebih dari 1 jam"}
+    ]},
+  { key:"kendala", type:"choice", title:"Kendala terbesar kamu sekarang soal jualan online apa?", hint:"Pilih yang paling kerasa berat.",
+    options:[
+      {v:"bingung_posting", t:"Bingung mau posting apa"},
+      {v:"foto_kurang", t:"Foto produk kurang menarik"},
+      {v:"susah_caption", t:"Susah bikin caption yang menarik"},
+      {v:"belum_pede", t:"Belum pede jualan online"}
+    ]},
+  { key:"kota", type:"text", title:"Usaha kamu berdomisili di kota mana?", hint:"Dipakai buat beberapa prompt lokasi-spesifik.", example:"contoh: Bandung, Surabaya, dsb." }
+];
+
+const CATEGORY_LABEL = { makanan:"Makanan & Minuman", fashion:"Fashion & Aksesoris", kerajinan:"Kerajinan & Produk Rumahan", jasa:"Jasa & Layanan", lainnya:"produk/jasa kamu" };
+
+const PROMPTS_BY_CATEGORY = {
+  makanan: [
+    "Buatkan 3 ide foto untuk {P} yang bikin orang laper cuma liat fotonya, bisa difoto pakai HP di rumah",
+    "Tulis 3 variasi caption jualan {P}: satu santai, satu bikin penasaran, satu promo diskon",
+    "Buatkan script video 15 detik proses bikin/menyajikan {P}, tanpa perlu ngomong di kamera",
+    "Buatkan template balasan chat WhatsApp buat yang nanya harga & cara pesan {P} di {K}",
+    "Buatkan checklist evaluasi mingguan buat pantau performa konten jualan {P}"
+  ],
+  fashion: [
+    "Buatkan 3 ide foto outfit/produk {P} yang cocok difoto di jalanan {K}, gaya editorial santai",
+    "Tulis 3 variasi caption buat {P}: satu gaya santai, satu storytelling, satu highlight bahan/kualitas",
+    "Buatkan script video 15 detik mix and match {P} dengan 2 gaya berbeda",
+    "Buatkan template balasan chat buat yang nanya ukuran, stok, dan cara order {P}",
+    "Buatkan checklist evaluasi mingguan buat pantau performa konten jualan {P}"
+  ],
+  kerajinan: [
+    "Buatkan 3 ide foto {P} yang menonjolkan detail buatan tangan, cocok difoto pakai HP",
+    "Tulis 3 variasi caption {P}: satu cerita proses pembuatan, satu highlight keunikan, satu buat kado",
+    "Buatkan script video singkat proses bikin {P} dari bahan mentah sampai jadi",
+    "Buatkan template balasan chat buat yang nanya custom order & waktu pengerjaan {P}",
+    "Buatkan checklist evaluasi mingguan buat pantau performa konten jualan {P}"
+  ],
+  jasa: [
+    "Buatkan 3 ide konten yang nunjukin hasil kerja {P} biar calon klien lebih percaya",
+    "Tulis 3 variasi caption promosi jasa {P}: satu testimoni, satu edukasi, satu penawaran",
+    "Buatkan script video singkat testimoni pelanggan {P} di {K}",
+    "Buatkan template balasan chat buat yang nanya harga & jadwal jasa {P}",
+    "Buatkan checklist evaluasi mingguan buat pantau performa konten promosi {P}"
+  ],
+  lainnya: [
+    "Buatkan 3 ide konten yang cocok buat memperkenalkan {P} ke calon pelanggan baru di {K}",
+    "Tulis 3 variasi caption jualan buat {P}: gaya santai, storytelling, dan promo",
+    "Buatkan script video 15 detik yang ngenalin {P} dengan cara sederhana",
+    "Buatkan template balasan chat buat pertanyaan umum soal {P}",
+    "Buatkan checklist evaluasi mingguan buat pantau performa konten {P}"
+  ]
+};
+
+const KENDALA_DAY1 = {
+  bingung_posting: "minta AI kasih 5 ide konten spesifik buat <b>{P}</b>, biar nggak bingung lagi mau posting apa hari ini.",
+  foto_kurang: "minta AI kasih brief foto sederhana biar <b>{P}</b> keliatan lebih menarik meski cuma modal HP.",
+  susah_caption: "minta AI bikinin 3 variasi caption buat <b>{P}</b>, terus pilih yang paling 'kedengeran kamu banget'.",
+  belum_pede: "minta AI bantu tulis kalimat pembuka jualan yang nggak berasa maksa buat <b>{P}</b>."
+};
+
+const WAKTU_NOTE = {
+  singkat: "Waktu luangmu terbatas, gapapa — potong tiap misi jadi 2 bagian kalau perlu, yang penting jalan tiap hari.",
+  sedang: "Waktu segini udah cukup buat nyelesain satu misi harian secara penuh.",
+  agakl: "Kamu punya cukup waktu buat sekalian coba variasi lain dari tiap prompt di bawah.",
+  panjang: "Kamu bisa gas lebih jauh — coba gabungin 2 misi jadi satu hari biar progresnya makin cepat."
+};
+
+const AI_TIP = {
+  belum: "Mulai dari <b>ChatGPT</b> versi gratis di chatgpt.com atau <b>Gemini</b> di gemini.google.com — cukup lewat browser HP, nggak perlu install apa-apa. Tinggal tempel prompt di bawah, langsung jalan.",
+  chatgpt: "Lanjutkan pakai <b>ChatGPT</b> ya — tapi coba juga sesekali di <b>Gemini</b> buat bandingkan hasilnya, kadang gaya bahasanya beda dan bisa saling melengkapi.",
+  gemini: "Lanjutkan pakai <b>Gemini</b> ya — tapi coba juga sesekali di <b>ChatGPT</b> buat bandingkan hasilnya, kadang gaya bahasanya beda dan bisa saling melengkapi.",
+  sering: "Kamu udah lumayan terbiasa pakai AI — coba tantang diri eksplor prompt yang lebih detail/spesifik biar hasilnya makin pas sama gaya bisnismu."
+};
+
+const ROADMAP_BASE = [
+  null, // day 1 handled separately (priority, based on kendala)
+  "Rapikan profil bisnis kamu — minta AI bantu tulis ulang bio & deskripsi singkat buat <b>{P}</b>.",
+  "Eksekusi konten pertama sesuai brief dari AI kemarin — nggak perlu sempurna, yang penting jadi.",
+  "Posting konten pertama ke Instagram atau status WhatsApp hari ini juga.",
+  "Bikin template balasan chat biar nggak bingung jawab pertanyaan yang sama berulang-ulang.",
+  "Coba bikin satu video singkat pertama pakai script yang udah disusunin AI.",
+  "Evaluasi progres minggu ini + minta AI bantu susun rencana konten minggu depan."
+];
+
+const ACCENTS = ["var(--teal)","var(--orange)","var(--purple)"];
+
+let answers = {};
+let step = 0; // 0 = intro, 1..6 = questions, 7 = loading, 8 = results
+try{ answers = JSON.parse(localStorage.getItem('jetai_mahirai_answers') || 'null') || {}; }catch(e){ answers = {}; }
+const hasSaved = Object.keys(answers).length === QUESTIONS.length;
+
+function saveAnswers(){ try{ localStorage.setItem('jetai_mahirai_answers', JSON.stringify(answers)); }catch(e){} }
+
+function fill(tpl, produk, kota){ return tpl.replaceAll("{P}", produk).replaceAll("{K}", kota); }
+
+function app(){ return document.getElementById('app'); }
+
+function renderIntro(){
+  app().innerHTML = `
+  <div class="screen intro-hero"><div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>Mini App AI &middot; by JET AI</div>
+    <h1 class="htitle">Mahir <em>AI</em> UMKM</h1>
+    <p class="hsub">Jawab 6 pertanyaan singkat, dapetin roadmap harian + kumpulan prompt siap-tempel yang dibuat khusus buat usahamu. Sekitar 2 menit aja.</p>
+    <div class="featrow">
+      <span class="feat">⚡ 2 Menit Selesai</span>
+      <span class="feat">🎯 Dipersonalisasi</span>
+      <span class="feat">📋 Prompt Siap Tempel</span>
+      <span class="feat">🆓 Gratis, Tanpa Akun</span>
+    </div>
+    <div class="introbtns">
+      <button class="bigbtn" id="btnStart">Mulai Sekarang →</button>
+      ${hasSaved ? `<button class="ghostbtn" id="btnContinue">↻ Lanjutkan Rencana Kamu</button>` : ``}
+    </div>
+    ${hasSaved ? `<div class="savednote">Kami nemuin rencana yang udah pernah kamu isi sebelumnya di device ini.</div>` : ``}
+    <div class="timeest">💡 Hasil beda-beda tiap orang, tergantung konsistensi praktik — ini cuma titik mulai, bukan jaminan otomatis.</div>
+  </div></div>`;
+  document.getElementById('btnStart').addEventListener('click', () => { answers = {}; step = 1; renderStep(); });
+  if(hasSaved) document.getElementById('btnContinue').addEventListener('click', () => { step = 8; renderStep(); });
+}
+
+function renderQuestion(qIndex){
+  const q = QUESTIONS[qIndex - 1];
+  const pct = Math.round((qIndex-1)/QUESTIONS.length*100);
+  let bodyHtml = "";
+  if(q.type === "text"){
+    bodyHtml = `<input class="qinput" id="qinput" type="text" placeholder="${q.example.replace('contoh: ','')}" value="${answers[q.key] || ''}">
+      <div class="qexample">${q.example}</div>`;
+  } else {
+    bodyHtml = `<div class="optlist" id="optlist">${q.options.map(o => `
+      <div class="opt ${answers[q.key]===o.v?'selected':''}" data-v="${o.v}">
+        <span class="radio"></span><span class="otext">${o.t}</span>
+      </div>`).join('')}</div>`;
+  }
+  app().innerHTML = `
+  <div class="screen"><div class="wrap">
+    <div class="qprog"><span>PERTANYAAN ${qIndex} DARI ${QUESTIONS.length}</span><span>${pct}%</span></div>
+    <div class="qtrack"><div class="qfill" style="width:${pct}%"></div></div>
+    <div class="qtitle">${q.title}</div>
+    <div class="qhint">${q.hint}</div>
+    ${bodyHtml}
+    <div class="qnav">
+      <button class="navbtn back" id="btnBack">← Kembali</button>
+      <button class="navbtn next" id="btnNext" ${q.type==='choice' && !answers[q.key] ? 'disabled' : ''}>Lanjut →</button>
+    </div>
+  </div></div>`;
+
+  if(q.type === "text"){
+    const input = document.getElementById('qinput');
+    input.addEventListener('input', () => { answers[q.key] = input.value; });
+    input.focus();
+  } else {
+    document.querySelectorAll('.opt').forEach(el => {
+      el.addEventListener('click', () => {
+        answers[q.key] = el.dataset.v;
+        document.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+        el.classList.add('selected');
+        document.getElementById('btnNext').disabled = false;
+      });
+    });
+  }
+  document.getElementById('btnBack').addEventListener('click', () => {
+    if(qIndex === 1){ step = 0; } else { step = qIndex - 1; }
+    renderStep();
+  });
+  document.getElementById('btnNext').addEventListener('click', () => {
+    if(q.type === 'text' && !answers[q.key]) answers[q.key] = q.key === 'nama' ? '[NAMA_USAHA]' : '[KOTA]';
+    saveAnswers();
+    if(qIndex === QUESTIONS.length){ step = 7; renderStep(); }
+    else { step = qIndex + 1; renderStep(); }
+  });
+}
+
+function renderLoading(){
+  app().innerHTML = `<div class="screen loadwrap"><div class="wrap">
+    <div class="spinner"></div>
+    <div class="loadmsg" id="loadMsg">Menyusun rencana khusus buat ${answers.nama || 'usahamu'}...</div>
+  </div></div>`;
+  const msgs = ["Menyusun rencana khusus buat "+(answers.nama||'usahamu')+"...", "Meracik prompt yang paling relevan...", "Hampir selesai..."];
+  let i = 0;
+  const iv = setInterval(() => { i++; if(i < msgs.length) document.getElementById('loadMsg').textContent = msgs[i]; }, 500);
+  setTimeout(() => { clearInterval(iv); step = 8; renderStep(); }, 1600);
+}
+
+function renderResults(){
+  const produk = answers.nama || "[NAMA_USAHA]";
+  const kota = answers.kota || "[KOTA]";
+  const kategori = answers.kategori || "lainnya";
+  const kategoriLabel = CATEGORY_LABEL[kategori] || CATEGORY_LABEL.lainnya;
+  const kendala = answers.kendala || "bingung_posting";
+  const waktu = answers.waktu || "sedang";
+  const aiUsed = answers.ai_used || "belum";
+
+  const day1Text = fill(KENDALA_DAY1[kendala], produk, kota);
+  const roadmapHtml = ROADMAP_BASE.map((tpl, i) => {
+    const accent = ACCENTS[i % 3];
+    if(i === 0){
+      return `<div class="rday priority" style="--accent:${accent}">
+        <div class="rn">01</div>
+        <div class="rt"><span class="priotag">🎯 Prioritas buat kamu</span><br>${day1Text}</div>
+      </div>`;
+    }
+    return `<div class="rday" style="--accent:${accent}">
+      <div class="rn">${String(i+1).padStart(2,'0')}</div>
+      <div class="rt">${fill(tpl, produk, kota)}</div>
+    </div>`;
+  }).join('');
+
+  const prompts = PROMPTS_BY_CATEGORY[kategori] || PROMPTS_BY_CATEGORY.lainnya;
+  const promptsHtml = prompts.map((tpl, i) => {
+    const accent = ACCENTS[i % 3];
+    const plain = fill(tpl, produk, kota);
+    const html = fill(tpl, "<b>"+produk+"</b>", "<b>"+kota+"</b>");
+    const chatgptUrl = "https://chatgpt.com/?q=" + encodeURIComponent(plain);
+    const geminiUrl = "https://gemini.google.com/app?q=" + encodeURIComponent(plain);
+    return `<div class="prow" style="--accent:${accent}">
+      <span class="pn">${String(i+1).padStart(2,'0')}</span>
+      <div style="flex:1">
+        <div class="ptext">${html}</div>
+        <div class="pactions">
+          <button class="pbtn" data-copy="${encodeURIComponent(plain)}">📋 Salin</button>
+          <a class="pbtn" href="${chatgptUrl}" target="_blank" rel="noopener">🤖 ChatGPT</a>
+          <a class="pbtn" href="${geminiUrl}" target="_blank" rel="noopener">✨ Gemini</a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  app().innerHTML = `
+  <div class="wrap">
+    <div class="rtop">
+      <div class="rbadge">✅ Rencana Kamu Siap</div>
+      <h1 class="rtitle">Roadmap &amp; Prompt buat <b>${produk}</b></h1>
+      <p class="rsub">Kategori: ${kategoriLabel} &middot; Domisili: ${kota}. Semua di bawah disusun berdasarkan jawabanmu tadi.</p>
+    </div>
+
+    <div class="tipbox"><span class="ic">🤖</span><p><b>Rekomendasi tools:</b> ${AI_TIP[aiUsed]}</p></div>
+    <div class="tipbox" style="border-left-color:var(--purple)"><span class="ic">⏱️</span><p><b>Soal waktu:</b> ${WAKTU_NOTE[waktu]}</p></div>
+
+    <div class="sectionlabel">Roadmap 7 Hari Pertama</div>
+    <div class="roadmap">${roadmapHtml}</div>
+
+    <div class="sectionlabel">Prompt Siap Tempel buat ${kategoriLabel}</div>
+    <div class="plist">${promptsHtml}</div>
+
+    <div class="closing">
+      <h2>Mau Lebih Lengkap Lagi?</h2>
+      <p>Ini baru titik mulai. Buat strategi konten &amp; closing yang lebih dalam, cek e-book <b>Jualan Laris di WhatsApp &amp; Instagram</b> dari tim JET AI.</p>
+      <div class="btnrow">
+        <a class="btn primary" href="https://wa.me/6281321910880?text=Halo%20JET%20AI%2C%20saya%20mau%20tanya%20soal%20Mahir%20AI%20UMKM" target="_blank" rel="noopener">💬 Chat JET AI di WhatsApp</a>
+      </div>
+      <div class="brandline">
+        <div class="logo">J</div>
+        <div class="t"><b>JET AI</b><small>PT. Japri Edukasi Teknologi</small></div>
+      </div>
+    </div>
+
+    <footer><p class="disclaimer">Hasil rencana ini dibuat otomatis berdasarkan jawabanmu, bukan jaminan hasil — konsistensi praktik tetap yang paling menentukan. Rencana disimpan di browser kamu sendiri. Tool ini tidak berafiliasi dengan OpenAI atau Google. Seluruh konten hak cipta JET AI &middot; PT. Japri Edukasi Teknologi.</p></footer>
+  </div>
+  <div class="resultbar"><div class="wrap resultbar-inner">
+    <span>Mau ganti jawaban?</span>
+    <div style="display:flex; gap:8px;">
+      <button class="ghostbtn" id="btnEdit" style="padding:10px 18px; font-size:13.5px;">↻ Ulang Isi Jawaban</button>
+      <button class="bigbtn" style="padding:10px 18px; font-size:13.5px;" onclick="window.print()">🖨️ Simpan PDF</button>
+    </div>
+  </div></div>`;
+
+  document.getElementById('btnEdit').addEventListener('click', () => {
+    if(confirm('Yakin mau ulang isi jawaban dari awal?')){
+      answers = {}; try{ localStorage.removeItem('jetai_mahirai_answers'); }catch(e){}
+      step = 1; renderStep();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-copy]');
+    if(!btn) return;
+    const text = decodeURIComponent(btn.getAttribute('data-copy'));
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent;
+      btn.textContent = '✅ Tersalin';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1500);
+    }).catch(() => {});
+  });
+}
+
+function renderStep(){
+  if(step === 0) renderIntro();
+  else if(step >= 1 && step <= QUESTIONS.length) renderQuestion(step);
+  else if(step === 7) renderLoading();
+  else if(step === 8) renderResults();
+}
+
+renderStep();
+</script>
+
+</body></html>

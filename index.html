@@ -145,9 +145,10 @@
       <h1>Jualan Laris di WhatsApp & Instagram</h1>
       <p class="lead">Untuk kamu yang produknya udah oke, tapi jualan online-nya masih jalan di tempat. 8 bab, langsung praktik, semua template bisa langsung dipakai — nggak perlu tim marketing</p>
       <ul class="benefits">
-        <li>Ganti dengan benefit #1 dari ebook-nya</li>
-        <li>Ganti dengan benefit #2</li>
-        <li>Ganti dengan benefit #3</li>
+        <li>8 Bab Praktik</li>
+        <li>Template Siap Isi</li>
+        <li>Dibaca dari HP</li>
+        <li>+ Bonus 20 Prompt AI Foto/Video</li>
       </ul>
 
       <form id="lead-form" novalidate>
@@ -171,7 +172,7 @@
         <button type="submit" id="submit-btn">Kirim, ambil ebooknya</button>
         <div class="error" id="form-error"></div>
       </form>
-      <div class="fineprint">Ebook dikirim ke emailmu. Nggak ada spam, bisa berhenti kapan saja.</div>
+      <div class="fineprint">Ebook dikirim ke WhatsApp & email</div>
     </div>
 
     <div id="thankyou">
@@ -186,8 +187,8 @@
   <script>
     // ── Config — ganti dua ini setelah nomor WA funnel & endpoint sudah siap ──
     var LEADS_ENDPOINT = 'https://jet.japri.biz.id/api/leads';
-    var WA_NUMBER = '62XXXXXXXXXX'; // nomor WA funnel BARU (format internasional, tanpa +/spasi)
-    var WA_PREFILLED_TEXT = 'Halo, saya mau sample nya';
+    var WA_NUMBER = '6281321910880'; // nomor WA funnel BARU (format internasional, tanpa +/spasi)
+    var WA_PREFILLED_TEXT = 'Halo, saya mau Ebook nya';
     // ──────────────────────────────────────────────────────────────────────
 
     var form = document.getElementById('lead-form');
@@ -235,7 +236,7 @@
           errorEl.textContent = err.message || 'Gagal mengirim, coba lagi.';
           errorEl.style.display = 'block';
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Kirim, ambil ebooknya';
+          submitBtn.textContent = 'Ambil Ebook nya';
         });
     });
   </script>

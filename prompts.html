@@ -1,0 +1,378 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>100 Prompt Siap Tempel</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#050611; --bg-alt:#090c1a; --surface:#0d1024; --surface-2:#12162c;
+    --border:rgba(255,255,255,.09);
+    --text:#eef0f9; --text-dim:#9aa3bd; --text-faint:#6c7593;
+    --teal:#00dec5; --teal-soft:rgba(0,222,197,.13);
+    --orange:#ffbe1c; --orange-soft:rgba(255,190,28,.13);
+    --purple:#9458ff; --purple-soft:rgba(148,88,255,.13);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6; }
+  h1,h2,h3{ font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif; text-wrap:balance; margin:0; }
+  .mono{ font-family:'JetBrains Mono',ui-monospace,monospace; }
+  a{ color:inherit; } img{ max-width:100%; }
+  ::selection{ background:var(--teal-soft); color:var(--teal); }
+
+  .bar{ height:5px; width:100%; display:flex; }
+  .bar .b1{ flex:0 0 26%; background:var(--orange); }
+  .bar .b2{ flex:1 1 auto; background:var(--teal); }
+  .bar .b3{ flex:0 0 19%; background:var(--purple); }
+
+  .wrap{ max-width:840px; margin:0 auto; padding-inline:24px; }
+
+  .hero{ background:radial-gradient(ellipse 900px 600px at 15% -10%, rgba(0,222,197,.16), transparent 60%),
+    radial-gradient(ellipse 800px 600px at 100% 0%, rgba(148,88,255,.16), transparent 55%), var(--bg);
+    padding-block:56px 40px; border-bottom:1px solid var(--border); }
+  .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace; font-size:13px;
+    font-weight:600; letter-spacing:.1em; color:var(--teal); text-transform:uppercase; margin-bottom:20px; }
+  .eyebrow .sq{ width:9px; height:9px; background:var(--teal); border-radius:2px; }
+  h1.htitle{ font-size:clamp(30px,5vw,46px); font-weight:700; line-height:1.12; color:#fff; max-width:16ch; margin-bottom:16px; }
+  h1.htitle em{ font-style:normal; color:var(--orange); }
+  .hsub{ font-size:17.5px; color:var(--text-dim); max-width:56ch; margin-bottom:24px; }
+  .statrow{ display:flex; flex-wrap:wrap; gap:10px; }
+  .stat{ display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:100px; font-size:14px;
+    font-weight:700; border:1px solid var(--border); background:var(--surface); color:var(--text-dim); }
+  .stat b{ color:#fff; }
+
+  /* personalization card */
+  .pcard{ position:sticky; top:0; z-index:20; background:rgba(9,12,26,.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border); padding-block:18px; }
+  .pcard-inner{ display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; }
+  .field{ flex:1; min-width:180px; }
+  .field label{ display:block; font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--text-faint); margin-bottom:6px; }
+  .field input{ width:100%; padding:12px 14px; border-radius:10px; background:var(--surface); border:1.5px solid var(--border);
+    color:#fff; font-size:15px; font-family:'Plus Jakarta Sans',sans-serif; }
+  .field input:focus{ outline:none; border-color:var(--teal); }
+  .pnote{ font-size:13px; color:var(--text-faint); flex:none; align-self:center; }
+  .pdfbtn{ display:inline-flex; align-items:center; gap:8px; padding:12px 20px; border-radius:10px; background:var(--teal);
+    color:#04140f; font-weight:800; font-size:14.5px; border:none; cursor:pointer; white-space:nowrap; }
+
+  /* category nav */
+  .catnav{ display:flex; flex-wrap:wrap; gap:8px; padding-block:22px; border-bottom:1px solid var(--border); }
+  .catnav a{ font-size:13.5px; font-weight:700; padding:8px 14px; border-radius:100px; background:var(--surface);
+    border:1px solid var(--border); text-decoration:none; color:var(--text-dim); }
+  .catnav a:hover{ border-color:var(--teal); color:#fff; }
+
+  /* category sections */
+  .catsection{ border-bottom:1px solid var(--border); }
+  details{ padding-block:26px; }
+  summary{ cursor:pointer; list-style:none; display:flex; align-items:center; gap:16px; }
+  summary::-webkit-details-marker{ display:none; }
+  .catnum{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:var(--accent); flex:none; width:56px; }
+  .cathead{ flex:1; }
+  .cathead h2{ font-size:20px; font-weight:700; color:#fff; }
+  .cathead small{ color:var(--text-faint); font-size:13px; font-weight:600; }
+  .chev{ flex:none; width:20px; height:20px; color:var(--text-faint); transition:transform .15s; }
+  details[open] .chev{ transform:rotate(180deg); }
+
+  .plist{ margin-top:20px; display:flex; flex-direction:column; gap:10px; }
+  .prow{ display:flex; gap:14px; padding:16px 18px; border-radius:14px; background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent); }
+  .prow .pn{ font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; color:var(--accent); flex:none; width:26px; padding-top:2px; }
+  .prow .ptext{ flex:1; font-size:15px; color:#dfe4f2; line-height:1.55; }
+  .prow .ptext b{ color:var(--orange); font-weight:700; }
+  .pactions{ display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
+  .pbtn{ display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:100px; font-size:12.5px;
+    font-weight:700; border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text-dim);
+    cursor:pointer; text-decoration:none; }
+  .pbtn:hover{ border-color:var(--accent); color:#fff; }
+  .pbtn.copied{ border-color:var(--teal); color:var(--teal); }
+
+  /* closing */
+  .closing{ padding-block:48px; text-align:center; }
+  .closing h2{ color:#fff; font-size:26px; margin-bottom:12px; }
+  .closing p{ color:var(--text-dim); font-size:15.5px; max-width:52ch; margin:0 auto 22px; }
+  .btnrow{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:30px; }
+  .btn{ display:inline-flex; align-items:center; gap:9px; padding:14px 24px; border-radius:100px; font-size:15px;
+    font-weight:700; text-decoration:none; }
+  .btn.primary{ background:var(--teal); color:#04140f; }
+  .btn.ghost{ background:transparent; border:1.5px solid var(--border); color:#fff; }
+  .brandline{ display:flex; align-items:center; justify-content:center; gap:12px; }
+  .brandline .logo{ width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--teal),var(--purple));
+    display:flex; align-items:center; justify-content:center; font-weight:800; color:#04140f; font-family:'Space Grotesk',sans-serif; }
+  .brandline .t{ text-align:left; } .brandline b{ display:block; font-size:14.5px; color:#fff; }
+  .brandline small{ color:var(--text-faint); font-size:12.5px; }
+
+  footer{ padding-block:22px; }
+  .disclaimer{ font-size:12px; color:var(--text-faint); max-width:600px; margin:0 auto; text-align:center; }
+
+  @media (max-width:640px){
+    .pcard-inner{ flex-direction:column; align-items:stretch; }
+    .pdfbtn{ width:100%; justify-content:center; }
+    .catnum{ width:40px; font-size:24px; }
+  }
+
+  @media print{
+    .pcard, .catnav, .pactions, .closing .btnrow, footer .disclaimer, .bar { display:none !important; }
+    body{ background:#fff; color:#111; }
+    .hero{ background:none; border:none; padding-block:10px; }
+    .eyebrow, h1.htitle, .hsub{ color:#111 !important; }
+    .stat{ display:none; }
+    details{ page-break-inside:avoid; }
+    .prow{ background:#f6f6f6; border-color:#ddd; break-inside:avoid; }
+    .prow .ptext{ color:#111; }
+    .catnum{ color:#111 !important; }
+    a[href]:after{ content:""; }
+  }
+</style>
+
+<div class="bar"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>Prompt Pack AI &middot; by JET AI</div>
+    <h1 class="htitle">100 Prompt Siap Tempel untuk Ide Foto &amp; <em>Video</em> Produk</h1>
+    <p class="hsub">Isi nama produk &amp; kota kamu sekali di bawah &mdash; semua prompt otomatis menyesuaikan. Tinggal klik, tempel ke ChatGPT/Gemini, atau salin manual.</p>
+    <div class="statrow">
+      <span class="stat"><b>100</b>&nbsp;Prompt</span>
+      <span class="stat"><b>10</b>&nbsp;Kategori</span>
+      <span class="stat">Auto ke ChatGPT &amp; Gemini</span>
+      <span class="stat">Akses Selamanya</span>
+    </div>
+  </div>
+</header>
+
+<div class="pcard">
+  <div class="wrap pcard-inner">
+    <div class="field">
+      <label>Nama Produk</label>
+      <input id="inpProduk" type="text" value="Kopi Sultan" placeholder="contoh: Kopi Sultan">
+    </div>
+    <div class="field">
+      <label>Kota</label>
+      <input id="inpKota" type="text" value="Bandung" placeholder="contoh: Bandung">
+    </div>
+    <span class="pnote">Otomatis update di semua prompt &darr;</span>
+    <button class="pdfbtn" onclick="window.print()">📄 Export PDF</button>
+  </div>
+</div>
+
+<nav class="catnav wrap" id="catnav"></nav>
+
+<main id="catlist" class="wrap"></main>
+
+<div class="closing wrap">
+  <h2>Mau Panduan Lengkapnya Juga?</h2>
+  <p>Prompt ini adalah bonus dari e-book <b>Jualan Laris di WhatsApp &amp; Instagram</b> &mdash; 8 bab strategi lengkap dari foto produk sampai closing di WA, dari tim JET AI.</p>
+  <div class="btnrow">
+    <a class="btn primary" href="https://wa.me/6281321910880?text=Halo%20JET%20AI%2C%20saya%20mau%20tanya%20soal%20100%20Prompt%20Siap%20Tempel" target="_blank" rel="noopener">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-10 4.5-10 10 0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.5.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10s-4.5-10-9.96-10zm5.8 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 2 2.4 1.3 1.2 2.4 1.6 2.8 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+      Chat JET AI di WhatsApp
+    </a>
+  </div>
+  <div class="brandline">
+    <div class="logo">J</div>
+    <div class="t"><b>JET AI</b><small>PT. Japri Edukasi Teknologi</small></div>
+  </div>
+</div>
+
+<footer>
+  <p class="disclaimer">Hasil dari ChatGPT/Gemini bisa bervariasi tergantung platform dan versi model yang dipakai. Prompt ini adalah kerangka awal &mdash; sesuaikan lagi hasilnya dengan gaya brand kamu. Seluruh konten hak cipta JET AI &middot; PT. Japri Edukasi Teknologi.</p>
+</footer>
+
+<script>
+const CATS = [
+  { title:"Ide Konsep Foto Produk", prompts:[
+    "Foto {P} flatlay dari atas, dikelilingi alat/bahan pendukungnya, warna senada",
+    "Foto {P} dipegang tangan model, fokus ke tekstur, background blur",
+    "Foto {P} di atas permukaan reflektif (kaca/marmer), pencahayaan dramatis dari samping",
+    "Foto close-up detail {P}, fokus tajam ke bagian paling unik dari produk",
+    "Foto {P} dengan bayangan panjang siang hari, gaya minimalis modern",
+    "Foto grup beberapa varian {P} disusun rapi, top-down, latar warna kontras",
+    "Foto {P} dalam kemasan aslinya, di samping produk yang sudah dibuka",
+    "Foto {P} dengan efek gerakan (motion blur ringan) untuk kesan dinamis",
+    "Foto {P} gaya still life, dikombinasikan dengan elemen alam (daun, bunga, kayu)",
+    "Foto before-after menunjukkan hasil/manfaat memakai {P}"
+  ]},
+  { title:"Makanan & Minuman", prompts:[
+    "Foto {P} di atas piring saji lengkap dengan garnish, cahaya alami dari jendela",
+    "Foto close-up tekstur {P} saat dipotong/dituang, detail hingga tetesannya",
+    "Foto {P} dengan uap mengepul, tone hangat, waktu makan malam",
+    "Foto {P} dalam kemasan take-away, siap kirim, top-down",
+    "Video singkat tangan menuang/menyendok {P}, slow motion",
+    "Foto flatlay meja makan lengkap dengan {P} sebagai pusat perhatian",
+    "Foto {P} disandingkan dengan bahan baku aslinya di sekelilingnya",
+    "Foto proses pembuatan {P} di dapur, gaya dokumenter natural",
+    "Foto {P} dinikmati bersama teman/keluarga, suasana hangat dan santai",
+    "Foto {P} dengan highlight harga promo, teks overlay jelas dan besar"
+  ]},
+  { title:"Fashion & Aksesoris", prompts:[
+    "Foto model mengenakan {P} di jalanan kota {K}, gaya editorial santai",
+    "Foto flatlay {P} di atas kain linen bertekstur, cahaya natural lembut",
+    "Foto close-up detail bahan dan jahitan {P}",
+    "Foto mix and match {P} dengan 2-3 outfit berbeda dalam satu carousel",
+    "Foto {P} dipakai saat aktivitas sehari-hari (kerja, nongkrong, olahraga)",
+    "Foto {P} di depan cermin, gaya OOTD kasual",
+    "Foto {P} dengan variasi warna disusun gradasi, top-down",
+    "Video singkat model berputar menunjukkan {P} dari berbagai sisi",
+    "Foto {P} dipajang di gantungan/mannequin dengan pencahayaan studio",
+    "Foto {P} dengan properti pendukung (tas, sepatu, aksesoris) senada"
+  ]},
+  { title:"Kerajinan & Produk Rumahan", prompts:[
+    "Foto {P} dipajang di rak kayu minimalis, latar dinding polos",
+    "Foto tangan pengrajin sedang menyelesaikan {P}, gaya dokumenter warm tone",
+    "Foto {P} dengan skala ukuran (dibandingkan benda sehari-hari)",
+    "Foto {P} dalam kemasan siap kirim, packing rapi, top-down",
+    "Foto {P} diletakkan di ruang tamu/kamar sebagai dekorasi",
+    "Video proses pembuatan {P} dari bahan mentah sampai jadi, time-lapse",
+    "Foto detail motif/ukiran/pola unik pada {P}",
+    "Foto {P} dipajang berjejer menunjukkan variasi ukuran/motif",
+    "Foto {P} sebagai hadiah, dibungkus dengan pita dan kartu ucapan",
+    "Foto testimoni visual: {P} dipakai/dipajang di rumah pelanggan asli"
+  ]},
+  { title:"Background, Lighting & Properti", prompts:[
+    "Rekomendasi 3 warna background yang cocok untuk {P} berdasarkan warna produknya",
+    "Cara memanfaatkan cahaya jendela jam 9-11 pagi untuk foto {P} tanpa lampu tambahan",
+    "Ide properti pendukung sederhana (kain, kayu, tanaman) yang cocok untuk tema {P}",
+    "Cara membuat efek bayangan lembut untuk foto {P} pakai kertas kalkir/tirai tipis",
+    "Ide setup foto minimalis di meja kerja/rumah untuk {P} tanpa studio",
+    "Kombinasi warna latar dan produk yang membuat {P} \"pop\" tanpa terlalu ramai",
+    "Cara menghindari pantulan/silau saat foto {P} yang mengkilap",
+    "Ide angle foto (mata sejajar, atas, rendah) paling cocok untuk bentuk {P}",
+    "Setup lighting sederhana pakai HP dan lampu meja untuk foto malam {P}",
+    "Cara bikin background gradasi warna pakai kertas karton untuk {P}"
+  ]},
+  { title:"Ide Video Singkat & Reels", prompts:[
+    "Video transisi before-after menggunakan {P}, potongan cepat, musik upbeat",
+    "Video POV pembeli membuka paket {P} pertama kali",
+    "Video \"day in the life\" jualan {P} dari pagi sampai malam",
+    "Video trend audio viral yang di-remix dengan konten {P}",
+    "Video 3 alasan kenapa harus coba {P}, format teks besar + voiceover",
+    "Video reaksi asli pelanggan pertama kali coba/pakai {P}",
+    "Video behind-the-scenes proses produksi {P} di {K}",
+    "Video perbandingan {P} vs cara lama/manual, tunjukkan kelebihannya",
+    "Video tutorial singkat cara pakai/menikmati {P} dengan benar",
+    "Video \"packing ASMR\" saat menyiapkan pesanan {P} untuk dikirim"
+  ]},
+  { title:"Script & Narasi Video", prompts:[
+    "Tulis script 15 detik: hook masalah, solusi {P}, CTA closing",
+    "Tulis narasi voiceover untuk video testimoni pelanggan {P}",
+    "Tulis script storytelling asal-usul kenapa {P} ini dibuat",
+    "Tulis script tanya-jawab (FAQ) tercepat untuk video seputar {P}",
+    "Tulis narasi untuk video \"3 kesalahan orang saat pilih produk sejenis {P}\"",
+    "Tulis script video edukasi singkat tentang manfaat/keunggulan {P}",
+    "Tulis dialog fiktif dua orang membahas kenapa mereka suka {P}",
+    "Tulis script video \"restock alert\" untuk {P} yang menciptakan urgensi natural",
+    "Tulis narasi video ucapan terima kasih ke pelanggan {P}",
+    "Tulis script video comparison jujur: kapan {P} cocok, kapan tidak"
+  ]},
+  { title:"Caption & Teks di Layar", prompts:[
+    "Tulis 5 variasi hook caption untuk {P} pakai formula pain-solution",
+    "Tulis caption storytelling personal tentang perjalanan bikin {P}",
+    "Tulis 3 variasi CTA penutup caption yang halus tapi mengarahkan closing",
+    "Tulis teks overlay singkat (maks 5 kata) untuk video hook {P}",
+    "Tulis caption edukasi ringan yang menyisipkan {P} secara natural",
+    "Tulis caption format listicle \"5 alasan {P} wajib kamu punya\"",
+    "Tulis caption humoris/relatable seputar masalah yang diselesaikan {P}",
+    "Tulis caption untuk momen restock/produk baru {P}",
+    "Tulis caption testimoni yang parafrase ulasan pelanggan asli {P}",
+    "Tulis 10 hashtag relevan untuk {P} di area {K}"
+  ]},
+  { title:"Momen Jualan Musiman", prompts:[
+    "Ide promo {P} untuk momen gajian awal bulan",
+    "Ide konten {P} untuk momen Ramadan/Lebaran",
+    "Ide bundling {P} untuk kado akhir tahun/Natal",
+    "Ide promo kilat {P} untuk tanggal kembar (harbolnas)",
+    "Ide konten {P} menyambut tahun ajaran baru/back to school",
+    "Ide promo {P} untuk momen Hari Kemerdekaan",
+    "Ide konten ucapan hari besar yang menyisipkan {P} secara halus",
+    "Ide flash sale {P} untuk weekend, dengan urgensi waktu terbatas",
+    "Ide paket hemat {P} untuk musim liburan sekolah",
+    "Ide konten ulang tahun bisnis, menawarkan diskon {P} sebagai rasa terima kasih"
+  ]},
+  { title:"Evaluasi & Perencanaan Konten", prompts:[
+    "Buatkan template evaluasi mingguan performa konten {P}",
+    "Buatkan checklist sebelum posting konten {P} biar nggak ada yang kelewat",
+    "Buatkan kerangka kalender konten 1 bulan untuk {P}",
+    "Buatkan daftar pertanyaan refleksi kenapa konten {P} tertentu kurang engage",
+    "Buatkan rencana konten 3 pilar (edukasi, promosi, testimoni) untuk {P}",
+    "Buatkan template mencatat ide konten {P} biar nggak kehabisan ide",
+    "Buatkan panduan menentukan jam posting terbaik untuk audiens {P} di {K}",
+    "Buatkan template membandingkan performa konten organik vs iklan {P}",
+    "Buatkan rencana repurpose 1 video jadi 5 konten berbeda untuk {P}",
+    "Buatkan template mencatat insight pelanggan dari kolom komentar {P}"
+  ]}
+];
+const ACCENTS = ["var(--teal)","var(--orange)","var(--purple)"];
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+
+function fill(tpl, produk, kota){
+  return tpl.replaceAll("{P}", produk).replaceAll("{K}", kota);
+}
+function highlight(tpl, produk, kota){
+  let out = tpl.replaceAll("{P}", "<b>"+produk+"</b>").replaceAll("{K}", "<b>"+kota+"</b>");
+  return out;
+}
+
+function render(){
+  const produk = document.getElementById('inpProduk').value.trim() || "[NAMA_PRODUK]";
+  const kota = document.getElementById('inpKota').value.trim() || "[KOTA]";
+  const nav = document.getElementById('catnav');
+  const list = document.getElementById('catlist');
+  nav.innerHTML = ""; list.innerHTML = "";
+
+  CATS.forEach((cat, ci) => {
+    const id = "kat-"+(ci+1);
+    const accent = ACCENTS[ci % 3];
+    nav.insertAdjacentHTML('beforeend', `<a href="#${id}">${String(ci+1).padStart(2,'0')} ${cat.title}</a>`);
+
+    const section = document.createElement('section');
+    section.className = 'catsection';
+    section.id = id;
+    section.innerHTML = `
+      <details ${ci===0?'open':''}>
+        <summary style="--accent:${accent}">
+          <span class="catnum" style="color:${accent}">${String(ci+1).padStart(2,'0')}</span>
+          <span class="cathead"><h2>${cat.title}</h2><small>${cat.prompts.length} prompt</small></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </summary>
+        <div class="plist" style="--accent:${accent}"></div>
+      </details>`;
+    const plist = section.querySelector('.plist');
+    cat.prompts.forEach((tpl, pi) => {
+      const plain = fill(tpl, produk, kota);
+      const html = highlight(tpl, produk, kota);
+      const row = document.createElement('div');
+      row.className = 'prow';
+      row.style.setProperty('--accent', accent);
+      const chatgptUrl = "https://chatgpt.com/?q=" + encodeURIComponent(plain);
+      const geminiUrl = "https://gemini.google.com/app?q=" + encodeURIComponent(plain);
+      row.innerHTML = `
+        <span class="pn">${String(pi+1).padStart(2,'0')}</span>
+        <div style="flex:1">
+          <div class="ptext">${html}</div>
+          <div class="pactions">
+            <button class="pbtn" data-copy="${encodeURIComponent(plain)}">📋 Salin</button>
+            <a class="pbtn" href="${chatgptUrl}" target="_blank" rel="noopener">🤖 ChatGPT</a>
+            <a class="pbtn" href="${geminiUrl}" target="_blank" rel="noopener">✨ Gemini</a>
+          </div>
+        </div>`;
+      plist.appendChild(row);
+    });
+    list.appendChild(section);
+  });
+}
+
+document.getElementById('inpProduk').addEventListener('input', render);
+document.getElementById('inpKota').addEventListener('input', render);
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-copy]');
+  if(!btn) return;
+  const text = decodeURIComponent(btn.getAttribute('data-copy'));
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✅ Tersalin';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1500);
+  }).catch(() => {});
+});
+
+render();
+</script>
+
+</body></html>

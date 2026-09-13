@@ -199,20 +199,30 @@
       return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_PREFILLED_TEXT);
     }
 
+    // Same rule JET Dashboard uses server-side (leading 0 -> 62) so the sheet
+    // always stores one consistent format, e.g. "0812..." / "62812..." /
+    // "+62 812..." all become "+62812...". Returns null if too short to be real.
+    function normalizePhone(raw) {
+      var digits = String(raw || '').replace(/\D/g, '');
+      if (digits.charAt(0) === '0') digits = '62' + digits.slice(1);
+      return digits.length >= 9 ? '+' + digits : null;
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       errorEl.style.display = 'none';
       var data = new FormData(form);
+      var phone = normalizePhone(data.get('phone'));
       var payload = {
         name: String(data.get('name') || '').trim(),
         email: String(data.get('email') || '').trim(),
-        phone: String(data.get('phone') || '').trim(),
+        phone: phone,
         website: String(data.get('website') || ''), // honeypot
         source: 'auto-funel-dgf',
         page: window.location.pathname,
       };
-      if (!payload.name || !payload.email || !payload.phone) {
-        errorEl.textContent = 'Isi nama, email, dan nomor WhatsApp dulu ya.';
+      if (!payload.name || !payload.email || !phone) {
+        errorEl.textContent = !phone && data.get('phone') ? 'Nomor WhatsApp-nya kayaknya belum lengkap, cek lagi ya.' : 'Isi nama, email, dan nomor WhatsApp dulu ya.';
         errorEl.style.display = 'block';
         return;
       }

@@ -1,0 +1,432 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Jualan Laris WA & IG</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#050611;
+    --bg-alt:#090c1a;
+    --surface:#0d1024;
+    --surface-2:#12162c;
+    --border:rgba(255,255,255,.09);
+    --text:#eef0f9;
+    --text-dim:#9aa3bd;
+    --text-faint:#6c7593;
+    --teal:#00dec5;
+    --teal-soft:rgba(0,222,197,.13);
+    --orange:#ffbe1c;
+    --orange-soft:rgba(255,190,28,.13);
+    --purple:#9458ff;
+    --purple-soft:rgba(148,88,255,.13);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.7;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  code, .mono{ font-family:'JetBrains Mono', ui-monospace, monospace; }
+  a{ color:inherit; }
+  img{ max-width:100%; }
+  ::selection{ background:var(--teal-soft); color:var(--teal); }
+
+  .bar{ height:5px; width:100%; display:flex; }
+  .bar span{ height:100%; }
+  .bar .b-teal{ background:var(--teal); flex:1 1 auto; }
+  .bar .b-orange{ background:var(--orange); flex:0 0 26%; }
+  .bar .b-purple{ background:var(--purple); flex:0 0 19%; }
+
+  .wrap{ max-width:800px; margin:0 auto; padding-inline:24px; }
+  .prose{ max-width:640px; }
+
+  /* ---------- HERO ---------- */
+  .hero{ background:radial-gradient(ellipse 900px 600px at 15% -10%, rgba(0,222,197,.16), transparent 60%),
+                    radial-gradient(ellipse 800px 600px at 100% 0%, rgba(148,88,255,.16), transparent 55%),
+                    var(--bg);
+    padding-block:64px 52px; border-bottom:1px solid var(--border); }
+  .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono',monospace;
+    font-size:13px; font-weight:600; letter-spacing:.12em; color:var(--teal); text-transform:uppercase; margin-bottom:22px; }
+  .eyebrow .sq{ width:9px; height:9px; background:var(--teal); border-radius:2px; }
+  h1.hero-title{ font-size:clamp(34px,5.6vw,54px); font-weight:700; line-height:1.12; letter-spacing:-.01em;
+    max-width:15ch; color:#fff; margin-bottom:22px; }
+  h1.hero-title em{ font-style:normal; color:var(--orange); }
+  .hero-sub{ font-size:19px; color:var(--text-dim); max-width:52ch; margin-bottom:30px; }
+  .chiprow{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:8px; }
+  .chip{ display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:100px;
+    font-size:14px; font-weight:600; border:1px solid var(--border); background:var(--surface); color:var(--text-dim); }
+  .chip b{ color:var(--text); font-weight:700; }
+  .chip.hi{ background:var(--orange-soft); border-color:rgba(255,190,28,.4); color:#ffd977; }
+
+  /* ---------- SECTION SHELLS ---------- */
+  section.band{ padding-block:56px; border-bottom:1px solid var(--border); }
+  section.band.alt{ background:var(--bg-alt); }
+  .kicker{ font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--text-faint); margin-bottom:14px; }
+  h2.h-section{ font-size:clamp(24px,3.6vw,32px); font-weight:700; color:#fff; margin-bottom:18px; }
+
+  /* ---------- TOC ---------- */
+  .toc-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:26px; }
+  .toc-item{ display:flex; align-items:baseline; gap:14px; padding:16px 18px; border-radius:14px;
+    background:var(--surface); border:1px solid var(--border); text-decoration:none; transition:border-color .15s; }
+  .toc-item:hover{ border-color:var(--teal); }
+  .toc-item .n{ font-family:'JetBrains Mono',monospace; font-weight:600; font-size:15px; color:var(--text-faint); flex:none; }
+  .toc-item .t{ font-size:15px; font-weight:600; color:var(--text); }
+  .toc-item.bonus{ background:var(--purple-soft); border-color:rgba(148,88,255,.4); }
+  .toc-item.bonus .n{ color:var(--purple); }
+
+  /* ---------- CHAPTER ---------- */
+  .chapter{ display:grid; grid-template-columns:88px 1fr; gap:28px; }
+  .chapter .num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:56px; line-height:1;
+    color:var(--accent, var(--teal)); opacity:.9; }
+  .chapter h2{ font-size:clamp(22px,3.2vw,28px); font-weight:700; color:#fff; margin-bottom:16px; max-width:26ch; }
+  .chapter p{ color:var(--text-dim); font-size:16.5px; margin:0 0 16px; }
+  .chapter ul, .chapter ol{ color:var(--text-dim); font-size:16.5px; padding-left:22px; margin:0 0 16px; }
+  .chapter li{ margin-bottom:8px; }
+  .chapter li b, .chapter p b{ color:var(--text); font-weight:700; }
+  .chapter strong.accent{ color:var(--accent, var(--teal)); }
+
+  .tplbox{ margin-top:22px; border-radius:16px; background:var(--surface); border:1px solid var(--border);
+    border-left:3px solid var(--accent, var(--teal)); padding:20px 22px; }
+  .tplbox .lbl{ font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--accent, var(--teal)); margin-bottom:12px; display:block; }
+  .tplbox pre{ margin:0; white-space:pre-wrap; font-family:'JetBrains Mono',monospace; font-size:14px;
+    line-height:1.75; color:#dfe4f2; }
+  .tplbox .ph{ color:var(--orange); }
+
+  @media (max-width:640px){
+    .chapter{ grid-template-columns:52px 1fr; gap:16px; }
+    .chapter .num{ font-size:34px; }
+    .toc-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- BONUS ---------- */
+  .bonus-card{ border-radius:22px; padding:32px; background:linear-gradient(160deg, rgba(148,88,255,.14), rgba(0,222,197,.08));
+    border:1px solid rgba(148,88,255,.35); }
+  .bonus-head{ display:flex; align-items:center; gap:14px; margin-bottom:8px; }
+  .bonus-head .ico{ width:44px; height:44px; border-radius:12px; background:var(--purple); display:flex;
+    align-items:center; justify-content:center; flex:none; }
+  .promptgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:24px; }
+  .promptcat{ font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--purple); margin:22px 0 10px; }
+  .promptcat:first-of-type{ margin-top:6px; }
+  .prompt-item{ background:rgba(5,6,17,.5); border:1px solid var(--border); border-radius:12px; padding:14px 16px;
+    font-family:'JetBrains Mono',monospace; font-size:13.5px; color:#dfe4f2; line-height:1.6; }
+  .prompt-item .ph{ color:var(--orange); }
+
+  /* ---------- CLOSING CTA ---------- */
+  .cta-card{ border-radius:24px; background:var(--surface); border:1px solid var(--border); padding:40px 36px;
+    text-align:center; }
+  .cta-card h2{ color:#fff; font-size:clamp(24px,4vw,32px); margin-bottom:14px; }
+  .cta-card p{ color:var(--text-dim); font-size:16.5px; max-width:52ch; margin:0 auto 26px; }
+  .btnrow{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-bottom:28px; }
+  .btn{ display:inline-flex; align-items:center; gap:10px; padding:15px 28px; border-radius:100px;
+    font-size:15.5px; font-weight:700; text-decoration:none; }
+  .btn.primary{ background:var(--teal); color:#04140f; }
+  .btn.ghost{ background:transparent; border:1.5px solid var(--border); color:var(--text); }
+  .btn.buy{ background:var(--orange); color:#241a05; }
+  .brandline{ display:flex; align-items:center; justify-content:center; gap:14px; padding-top:26px;
+    border-top:1px solid var(--border); }
+  .brandline .logo{ width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,var(--teal),var(--purple));
+    display:flex; align-items:center; justify-content:center; font-weight:800; color:#04140f; font-family:'Space Grotesk',sans-serif; }
+  .brandline .t{ text-align:left; }
+  .brandline b{ display:block; font-size:15px; color:#fff; }
+  .brandline small{ color:var(--text-faint); font-size:13px; }
+
+  footer{ padding-block:26px; }
+  .disclaimer{ font-size:12.5px; color:var(--text-faint); max-width:640px; margin:0 auto 18px; text-align:center; }
+  .copyright{ text-align:center; font-size:12.5px; color:var(--text-faint); font-family:'JetBrains Mono',monospace; }
+</style>
+
+<div class="bar"><span class="b-orange" style="flex:0 0 26%"></span><span class="b-teal"></span><span class="b-purple" style="flex:0 0 19%"></span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="sq"></span>Panduan Praktis UMKM &middot; by JET AI</div>
+    <h1 class="hero-title">Jualan Laris di WhatsApp &amp; <em>Instagram</em></h1>
+    <p class="hero-sub">Untuk kamu yang produknya udah oke, tapi jualan online-nya masih jalan di tempat. 8 bab, langsung praktik, semua template bisa langsung dipakai &mdash; nggak perlu tim marketing.</p>
+    <div class="chiprow">
+      <span class="chip"><b>8</b>&nbsp;Bab Praktik</span>
+      <span class="chip">Template Siap Isi</span>
+      <span class="chip">Dibaca dari HP</span>
+      <span class="chip hi">+ Bonus 20 Prompt AI Foto/Video</span>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <div class="kicker">Daftar Isi</div>
+    <h2 class="h-section">Delapan langkah, urut dari paling dasar</h2>
+    <div class="toc-grid">
+      <a class="toc-item" href="#bab-01"><span class="n">01</span><span class="t">Kenapa WA &amp; IG Cukup Buat UMKM</span></a>
+      <a class="toc-item" href="#bab-02"><span class="n">02</span><span class="t">Foto Produk Modal HP</span></a>
+      <a class="toc-item" href="#bab-03"><span class="n">03</span><span class="t">Caption yang Bikin Orang Pengen Beli</span></a>
+      <a class="toc-item" href="#bab-04"><span class="n">04</span><span class="t">Profil Instagram Biar Keliatan Serius</span></a>
+      <a class="toc-item" href="#bab-05"><span class="n">05</span><span class="t">Jadwal Posting yang Realistis</span></a>
+      <a class="toc-item" href="#bab-06"><span class="n">06</span><span class="t">Chat WA yang Nggak Bikin Kabur</span></a>
+      <a class="toc-item" href="#bab-07"><span class="n">07</span><span class="t">Nagih &amp; Terima Pembayaran</span></a>
+      <a class="toc-item" href="#bab-08"><span class="n">08</span><span class="t">Bikin Pelanggan Balik Lagi</span></a>
+      <a class="toc-item bonus" href="#bonus"><span class="n">+</span><span class="t">Bonus: 20 Prompt AI Foto &amp; Video</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 01 -->
+<section class="band alt" id="bab-01">
+  <div class="wrap">
+    <div class="chapter" style="--accent:var(--teal)">
+      <div class="num">01</div>
+      <div>
+        <h2>Kenapa WA &amp; IG Cukup Buat UMKM</h2>
+        <p>Nggak perlu website mahal atau tim marketing buat mulai jualan online. Hampir semua calon pembelimu sudah punya WhatsApp dan Instagram terpasang &mdash; tinggal dua kanal ini yang dipakai <strong class="accent">serius</strong>, bukan sekadar ada.</p>
+        <p>Serius di sini artinya tiga hal: <b>foto yang niat</b>, <b>respon yang cepat</b>, dan <b>tampilan profil yang meyakinkan</b>. Tiga hal ini yang dibahas satu-satu di bab berikutnya, plus template yang tinggal kamu isi sendiri.</p>
+        <ul>
+          <li>IG untuk <b>menarik perhatian</b> orang yang belum kenal brand kamu.</li>
+          <li>WA untuk <b>menutup penjualan</b> setelah mereka tertarik dan mulai tanya-tanya.</li>
+          <li>Kalau salah satu lemah, calon pembeli kabur di tengah jalan &mdash; makanya dua-duanya harus jalan bareng.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 02 -->
+<section class="band" id="bab-02">
+  <div class="wrap">
+    <div class="chapter" style="--accent:var(--orange)">
+      <div class="num">02</div>
+      <div>
+        <h2>Foto Produk Modal HP</h2>
+        <p>Kamera HP keluaran 4 tahun terakhir sudah lebih dari cukup. Yang bikin foto UMKM keliatan asal biasanya bukan kameranya, tapi <b>cahaya</b> dan <b>background</b>.</p>
+        <ul>
+          <li>Motret dekat jendela jam <b>9&ndash;11 pagi</b> atau <b>3&ndash;5 sore</b>. Hindari lampu kuning rumah, bikin warna produk meleset.</li>
+          <li>Background polos: kain, kertas karton, atau alas kayu. Satu warna dominan per foto, jangan ramai.</li>
+          <li>Ambil dari sudut 45&deg; dan sejajar mata produk, bukan dari atas lurus ke bawah kecuali memang produk flat (kain, cetakan).</li>
+        </ul>
+        <div class="tplbox">
+          <span class="lbl">Shot List Wajib &middot; 4 Foto per Produk</span>
+          <pre>1. Foto utama &mdash; produk utuh, background bersih
+2. Foto detail &mdash; tekstur/jahitan/label dari dekat
+3. Foto skala &mdash; dipegang tangan atau di samping benda sehari-hari
+4. Foto konteks &mdash; produk sedang dipakai/digunakan</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 03 -->
+<section class="band alt" id="bab-03">
+  <div class="wrap">
+    <div class="chapter" style="--accent:var(--purple)">
+      <div class="num">03</div>
+      <div>
+        <h2>Caption yang Bikin Orang Pengen Beli</h2>
+        <p>Caption bagus bukan yang panjang atau puitis &mdash; tapi yang jawab pertanyaan <b>"terus kenapa saya harus beli ini?"</b> dalam 3 baris pertama.</p>
+        <p>Pakai urutan <strong class="accent">Hook &rarr; Masalah &rarr; Solusi &rarr; CTA</strong>. Hook bikin orang berhenti scroll, masalah bikin mereka relate, solusi ya produk kamu, CTA kasih tahu harus ngapain sekarang.</p>
+        <div class="tplbox">
+          <span class="lbl">Template Caption &middot; Tinggal Isi</span>
+          <pre>Hook: <span class="ph">[PERTANYAAN ATAU KELUHAN YANG SERING DIALAMI TARGET PEMBELI]</span>
+Masalah: Selama ini <span class="ph">[MASALAH SPESIFIK]</span> bikin ribet karena <span class="ph">[ALASAN]</span>.
+Solusi: <span class="ph">[NAMA_PRODUK]</span> bikin itu selesai dengan <span class="ph">[KEUNGGULAN UTAMA]</span>.
+CTA: Order sekarang, chat WA di bio &mdash; ready stock, kirim hari ini.</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 04 -->
+<section class="band" id="bab-04">
+  <div class="wrap">
+    <div class="chapter" style="--accent:var(--teal)">
+      <div class="num">04</div>
+      <div>
+        <h2>Profil Instagram Biar Keliatan Serius</h2>
+        <p>Sebelum orang baca captionmu, mereka mampir dulu ke profil. Kalau profilnya berantakan, mereka kabur sebelum sempat lihat produk.</p>
+        <ul>
+          <li><b>Bio 3 baris:</b> baris 1 = apa yang kamu jual, baris 2 = untuk siapa/area kirim, baris 3 = cara order (link/CTA).</li>
+          <li><b>Highlight wajib:</b> Katalog, Testimoni, Cara Order, Ongkir/Area Kirim.</li>
+          <li><b>Feed konsisten:</b> pilih 2&ndash;3 warna dominan biar keliatan satu brand, bukan kumpulan foto acak.</li>
+        </ul>
+        <div class="tplbox">
+          <span class="lbl">Template Bio</span>
+          <pre><span class="ph">[NAMA_BISNIS]</span> &middot; <span class="ph">[KATEGORI PRODUK]</span>
+Kirim ke seluruh <span class="ph">[KOTA/INDONESIA]</span> &middot; Ready stock
+Order &darr; klik link di bawah</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 05 -->
+<section class="band alt" id="bab-05">
+  <div class="wrap">
+    <div class="chapter" style="--accent:var(--orange)">
+      <div class="num">05</div>
+      <div>
+        <h2>Jadwal Posting yang Realistis</h2>
+        <p>Rajin posting tiap hari lalu berhenti dua minggu lebih buruk daripada posting jarang tapi konsisten. Algoritma dan calon pembeli sama-sama suka <b>pola yang bisa ditebak</b>.</p>
+        <div class="tplbox">
+          <span class="lbl">Pola 4 Post per Minggu</span>
+          <pre>Senin  &mdash; 1 post produk (foto utama + caption AIDA)
+Rabu   &mdash; 1 post testimoni / behind-the-scenes proses produksi
+Jumat  &mdash; 1 post edukasi ringan seputar produk/niche kamu
+Minggu &mdash; 1 post promo/CTA (bundling, restock, limited stock)</pre>
+        </div>
+        <p>Kalau cuma sanggup 2 post seminggu, ambil Senin dan Jumat saja &mdash; tapi jangan pernah bolong dua minggu berturut-turut.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 06 -->
+<section class="band" id="bab-06">
+  <div class="wrap">
+    <div class="chapter" style="--accent:var(--purple)">
+      <div class="num">06</div>
+      <div>
+        <h2>Chat WA yang Nggak Bikin Kabur</h2>
+        <p>Kebanyakan closing gagal bukan karena harga, tapi karena <b>respon lambat</b> atau jawaban yang malah bikin bingung.</p>
+        <ul>
+          <li>Target balas di bawah <b>5 menit</b> di jam operasional &mdash; pasang link WA di bio biar mereka langsung chat, bukan komen dulu.</li>
+          <li>Susun jawaban: sapa &rarr; jawab pertanyaan &rarr; kasih 2 pilihan (bukan 10) &rarr; CTA closing.</li>
+          <li>Follow-up H+1 kalau belum ada balasan, H+3 kalau masih belum &mdash; sopan, tanpa maksa.</li>
+        </ul>
+        <div class="tplbox">
+          <span class="lbl">Template Follow-Up H+1</span>
+          <pre>Halo kak <span class="ph">[NAMA]</span>, mau bantu info soal <span class="ph">[NAMA_PRODUK]</span> yang kemarin ditanyain &mdash;
+masih ready kok, stock tinggal <span class="ph">[JUMLAH]</span>. Ada yang mau ditanyain lagi kak? 🙂</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 07 -->
+<section class="band alt" id="bab-07">
+  <div class="wrap">
+    <div class="chapter" style="--accent:var(--teal)">
+      <div class="num">07</div>
+      <div>
+        <h2>Nagih &amp; Terima Pembayaran Tanpa Canggung</h2>
+        <p>Invoice yang rapi bikin pembeli lebih percaya dan lebih cepat transfer. Nggak perlu aplikasi mahal, cukup format yang jelas dan konsisten.</p>
+        <div class="tplbox">
+          <span class="lbl">Format Invoice Sederhana</span>
+          <pre>Invoice #<span class="ph">[NOMOR]</span> &middot; <span class="ph">[TANGGAL]</span>
+Produk : <span class="ph">[NAMA_PRODUK]</span> x<span class="ph">[QTY]</span>
+Ongkir : <span class="ph">[JASA_KIRIM]</span> &mdash; Rp<span class="ph">[NOMINAL]</span>
+Total  : Rp<span class="ph">[TOTAL]</span>
+Bayar ke QRIS/rek <span class="ph">[NOMOR_REKENING]</span>, kirim bukti transfer ke chat ini ya kak 🙏</pre>
+        </div>
+        <p>Kalau belum bayar dalam 1x24 jam, kirim reminder halus &mdash; bukan nagih ketus. "Kak, pesanannya masih kami tahan ya, kalau sudah transfer boleh kirim bukti biar langsung diproses 🙏"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAB 08 -->
+<section class="band" id="bab-08">
+  <div class="wrap">
+    <div class="chapter" style="--accent:var(--orange)">
+      <div class="num">08</div>
+      <div>
+        <h2>Bikin Pelanggan Balik Lagi</h2>
+        <p>Jualan ke pembeli lama jauh lebih murah daripada cari pembeli baru terus-menerus. Kuncinya bukan diskon melulu, tapi <b>diingat</b>.</p>
+        <ul>
+          <li>Simpan data pembeli sederhana: nama, produk, tanggal beli &mdash; cukup di spreadsheet, nggak perlu CRM mahal.</li>
+          <li>Kirim kabar restock atau produk baru ke pembeli lama duluan, sebelum posting publik.</li>
+          <li>Buat program repeat order sederhana: beli ke-3 dapat bonus kecil &mdash; bukan diskon harga, tapi nilai tambah (ongkir gratis, produk sample).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="band alt" id="bonus">
+  <div class="wrap">
+    <div class="bonus-card">
+      <div class="bonus-head">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.9 5.8L20 9.5l-5.8 1.9L12 17l-1.9-5.6L4 9.5l6.1-1.7L12 2z" fill="#050611"/></svg>
+        </div>
+        <div>
+          <div class="kicker" style="margin-bottom:2px;">Bonus &middot; Berlaku Selamanya</div>
+          <h2 class="h-section" style="margin-bottom:0;">20 Prompt AI untuk Ide Foto &amp; Video Produk</h2>
+        </div>
+      </div>
+      <p style="color:var(--text-dim); max-width:60ch; margin-top:14px;">Tinggal ganti bagian <span class="ph mono" style="color:var(--orange)">[dalam kurung]</span> dengan nama produk dan lokasi kamu, lalu paste ke AI generator foto/video favoritmu.</p>
+
+      <div class="promptcat">Untuk Produk Fashion &amp; Aksesoris</div>
+      <div class="promptgrid">
+        <div class="prompt-item">Foto produk <span class="ph">[NAMA_PRODUK]</span> gaya flatlay di atas kain linen, cahaya natural dari kiri, bayangan lembut</div>
+        <div class="prompt-item">Model mengenakan <span class="ph">[NAMA_PRODUK]</span> di jalanan <span class="ph">[KOTA]</span>, golden hour, gaya editorial santai</div>
+        <div class="prompt-item">Close-up tekstur bahan <span class="ph">[NAMA_PRODUK]</span>, makro, fokus tajam pada jahitan</div>
+      </div>
+
+      <div class="promptcat">Untuk Produk Makanan &amp; Minuman</div>
+      <div class="promptgrid">
+        <div class="prompt-item">Foto <span class="ph">[NAMA_PRODUK]</span> di atas meja kayu, uap mengepul, cahaya hangat sore hari</div>
+        <div class="prompt-item">Video 5 detik proses menuang/membuka kemasan <span class="ph">[NAMA_PRODUK]</span>, slow motion</div>
+        <div class="prompt-item">Flatlay <span class="ph">[NAMA_PRODUK]</span> dikelilingi bahan baku aslinya, top-down, warna cerah</div>
+      </div>
+
+      <div class="promptcat">Untuk Kerajinan &amp; Produk Rumahan</div>
+      <div class="promptgrid">
+        <div class="prompt-item"><span class="ph">[NAMA_PRODUK]</span> dipajang di rak kayu minimalis, latar dinding putih, cahaya studio lembut</div>
+        <div class="prompt-item">Tangan pengrajin sedang menyelesaikan <span class="ph">[NAMA_PRODUK]</span>, gaya dokumenter, warm tone</div>
+        <div class="prompt-item"><span class="ph">[NAMA_PRODUK]</span> dalam kemasan siap kirim, di atas meja packing rapi, top-down</div>
+      </div>
+
+      <div class="promptcat">Untuk Konten Reels &amp; Video Singkat</div>
+      <div class="promptgrid">
+        <div class="prompt-item">Transisi before-after menggunakan <span class="ph">[NAMA_PRODUK]</span>, potongan cepat, musik upbeat</div>
+        <div class="prompt-item">Video unboxing <span class="ph">[NAMA_PRODUK]</span> dari sudut pandang pembeli (POV), natural light</div>
+        <div class="prompt-item">Behind-the-scenes proses produksi <span class="ph">[NAMA_PRODUK]</span> di <span class="ph">[LOKASI]</span>, candid, tanpa skrip kaku</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="band">
+  <div class="wrap">
+    <div class="cta-card">
+      <div class="kicker" style="text-align:center;">Lanjut Belajar Bareng JET AI</div>
+      <h2>Mau Dibantu Terapkan Langsung ke Bisnismu?</h2>
+      <p>Kalau butuh dibantu bikin Series Bible, kalender konten, sampai dashboard tracking lead pakai AI &mdash; tim JET AI siap bantu UMKM kamu, dari nol atau lanjut dari yang sudah jalan.</p>
+      <div class="btnrow">
+        <a class="btn buy" href="http://lynk.id/japri-digital/k8g4y53rgpky" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.9 5.8L20 9.5l-5.8 1.9L12 17l-1.9-5.6L4 9.5l6.1-1.7L12 2z" fill="currentColor"/></svg>
+          100 Prompt Siap Tempel untuk Ide Foto &amp; Video Produk
+        </a>
+        <a class="btn ghost" href="https://wa.me/6281321910880?text=Halo%20JET%20AI%2C%20saya%20baru%20baca%20panduan%20Jualan%20Laris%20WA%20%26%20IG%20dan%20mau%20tanya-tanya" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-10 4.5-10 10 0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.5.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10s-4.5-10-9.96-10zm5.8 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.4.4-.2.7.2.3.9 1.5 2 2.4 1.3 1.2 2.4 1.6 2.8 1.7.3.1.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1.9-.1 1.6z"/></svg>
+          Chat JET AI di WhatsApp
+        </a>
+      </div>
+      <div class="brandline">
+        <div class="logo">J</div>
+        <div class="t"><b>JET AI</b><small>PT. Japri Edukasi Teknologi</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="disclaimer">Panduan ini disusun berdasarkan praktik yang umum berhasil untuk UMKM di WhatsApp &amp; Instagram. Hasil setiap bisnis berbeda-beda tergantung produk, harga, dan konsistensi eksekusi &mdash; bukan janji omzet instan. Seluruh konten adalah hak cipta JET AI &middot; PT. Japri Edukasi Teknologi.</p>
+  <p class="copyright">&copy; JET AI &middot; Jualan Laris di WhatsApp &amp; Instagram v1.0</p>
+</footer>
+<div class="bar"><span class="b-teal"></span><span class="b-orange" style="flex:0 0 26%"></span></div>
+
+</body></html>

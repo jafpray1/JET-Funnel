@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ebook Gratis — Panduan DIGIFANA</title>
+<meta name="description" content="Ambil ebook gratisnya, lalu chat kami di WhatsApp buat lanjut." />
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --border: #262626;
+    --text: #f5f5f5;
+    --muted: #a3a3a3;
+    --accent: #22c55e;
+    --err: #ff6259;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 48px 20px 64px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.25;
+    margin: 0 0 14px;
+  }
+  .lead {
+    color: var(--muted);
+    font-size: 16px;
+    margin: 0 0 28px;
+  }
+  ul.benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: grid;
+    gap: 10px;
+  }
+  ul.benefits li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: var(--text);
+    font-size: 14.5px;
+  }
+  ul.benefits li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    display: grid;
+    gap: 14px;
+  }
+  label {
+    display: grid;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  input {
+    background: #0d0d0d;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+  }
+  input:focus { border-color: var(--accent); }
+  /* Honeypot — invisible to real visitors, present in the DOM for bots that auto-fill every field. */
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  button {
+    background: var(--accent);
+    color: #06210f;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button:disabled { opacity: 0.6; cursor: not-allowed; }
+  .error {
+    color: var(--err);
+    font-size: 13px;
+    display: none;
+  }
+  .fineprint {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 14px;
+    text-align: center;
+  }
+  #thankyou { display: none; }
+  #thankyou .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px 22px;
+    text-align: center;
+  }
+  #thankyou h2 { margin: 0 0 10px; font-size: 22px; }
+  #thankyou p { color: var(--muted); margin: 0 0 20px; }
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: #06210f;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div id="offer">
+      <div class="eyebrow">Ebook gratis</div>
+      <h1>[Judul Ebook Kamu Di Sini]</h1>
+      <p class="lead">Ganti judul, benefit, dan nomor WhatsApp di bawah sebelum publish — halaman ini fungsional, kontennya masih placeholder.</p>
+      <ul class="benefits">
+        <li>Ganti dengan benefit #1 dari ebook-nya</li>
+        <li>Ganti dengan benefit #2</li>
+        <li>Ganti dengan benefit #3</li>
+      </ul>
+
+      <form id="lead-form" novalidate>
+        <label>
+          Nama
+          <input type="text" name="name" required maxlength="200" autocomplete="name" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required maxlength="300" autocomplete="email" />
+        </label>
+        <label>
+          Nomor WhatsApp
+          <input type="tel" name="phone" required maxlength="40" placeholder="08xxxxxxxxxx" autocomplete="tel" />
+        </label>
+        <!-- Honeypot: real visitors never see or fill this. -->
+        <label class="hp" aria-hidden="true">
+          Website
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+        <button type="submit" id="submit-btn">Kirim, ambil ebooknya</button>
+        <div class="error" id="form-error"></div>
+      </form>
+      <div class="fineprint">Ebook dikirim ke emailmu. Nggak ada spam, bisa berhenti kapan saja.</div>
+    </div>
+
+    <div id="thankyou">
+      <div class="card">
+        <h2>Sip, hampir selesai!</h2>
+        <p>Ebook-nya lagi meluncur ke emailmu. Mau lebih cepat & langsung tanya-tanya? Chat kami sekarang:</p>
+        <a class="wa-btn" id="wa-link" href="#" target="_blank" rel="noopener">💬 Chat di WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Config — ganti dua ini setelah nomor WA funnel & endpoint sudah siap ──
+    var LEADS_ENDPOINT = 'https://jet.japri.biz.id/api/leads';
+    var WA_NUMBER = '62XXXXXXXXXX'; // nomor WA funnel BARU (format internasional, tanpa +/spasi)
+    var WA_PREFILLED_TEXT = 'Halo, saya mau sample nya';
+    // ──────────────────────────────────────────────────────────────────────
+
+    var form = document.getElementById('lead-form');
+    var errorEl = document.getElementById('form-error');
+    var submitBtn = document.getElementById('submit-btn');
+
+    function waLink() {
+      return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_PREFILLED_TEXT);
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.style.display = 'none';
+      var data = new FormData(form);
+      var payload = {
+        name: String(data.get('name') || '').trim(),
+        email: String(data.get('email') || '').trim(),
+        phone: String(data.get('phone') || '').trim(),
+        website: String(data.get('website') || ''), // honeypot
+        source: 'auto-funel-dgf',
+        page: window.location.pathname,
+      };
+      if (!payload.name || !payload.email || !payload.phone) {
+        errorEl.textContent = 'Isi nama, email, dan nomor WhatsApp dulu ya.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Mengirim…';
+
+      fetch(LEADS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(function (res) { return res.json().then(function (body) { return { ok: res.ok && body.ok, body: body }; }); })
+        .then(function (result) {
+          if (!result.ok) throw new Error((result.body && result.body.error) || 'Gagal mengirim, coba lagi.');
+          document.getElementById('wa-link').href = waLink();
+          document.getElementById('offer').style.display = 'none';
+          document.getElementById('thankyou').style.display = 'block';
+        })
+        .catch(function (err) {
+          errorEl.textContent = err.message || 'Gagal mengirim, coba lagi.';
+          errorEl.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Kirim, ambil ebooknya';
+        });
+    });
+  </script>
+</body>
+</html>
